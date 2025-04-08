@@ -1,0 +1,16 @@
+.chat-header-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.chats-page {
+    width: 80%;
+}
+
+.chat-users {
+    width: 25%;
+}
+
+.chat-user-div:hover{
+    background : grey;
+}
