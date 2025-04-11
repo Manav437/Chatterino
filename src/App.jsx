@@ -16,22 +16,26 @@ function App() {
 
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (user) => {
-			setIsLoggedIn(!!user); // Convert user object to boolean
-			setLoading(false);
+			setIsLoggedIn(!!user); // Convert user object to boolean (IMPPPPP)
+			setTimeout(() => {
+				setLoading(false);
+			}, 1200);
 		});
 
-		return () => unsubscribe(); // Cleanup on unmount
+		return () => unsubscribe();
 	}, []);
 
-	if (loading) return <p>Loading...</p>
+	if (loading) return (
+		<div style={{ marginTop: "35vh" }} className="app-loader"></div>
+	)
 	return (
 		<Router>
 			<Routes>
 				<Route path="/" element={isLoggedIn ? <HomeLoggedIn /> : <HomeNotLoggedIn />} />
 				<Route path="/register" element={!isLoggedIn ? <RegisterPage /> : <Navigate to="/" />} />
 				<Route path="/login" element={!isLoggedIn ? <LoginPage /> : <Navigate to="/" />} />
-				<Route path="/profile" element={isLoggedIn ? <ProfilePage /> : <Navigate to="/" />} />
-				<Route path="/chats" element={isLoggedIn ? <ChatsPage /> : <Navigate to="/chats" />} />
+				<Route path="/profile" element={isLoggedIn ? <ProfilePage /> : <Navigate to="/login" />} />
+				<Route path="/chats" element={isLoggedIn ? <ChatsPage /> : <Navigate to="/login" />} />
 				{/* <Route path="/about" element={<About />} /> */}
 
 			</Routes>

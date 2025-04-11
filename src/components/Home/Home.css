@@ -1,3 +1,14 @@
+/* @import "tailwindcss"; */
+
+/* Your custom styles */
+.custom-btn {
+  background-color: #000;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+
 .home-container {
     width: 95vw;
     display: flex;
@@ -75,11 +86,28 @@
     border-left: 3px solid rgb(45, 194, 227);
 }
 
+.home-logout-btn {
+    text-align: center;
+    font-size: .95rem;
+    height: 40px;
+    width: 100px;
+    /* background: #2a0b0b; */
+    border: 1px solid white;
+    border-radius: 10px;
+    transition: box-shadow 0.3s ease;
+}
+
+.home-logout-btn:hover {
+    /* background: #8d272a; */
+    box-shadow: 2px 4px 8px rgba(211, 69, 69, 0.983);
+}
 
 /* NOT LOGGED IN */
 
 .home-not-logged-in {
     width: 70vw;
+    min-height: 80vh;
+    height: 80vh;
 }
 
 /* .get-started { */
@@ -87,7 +115,154 @@
 /* }/ */
 
 .get-started button {
-    padding: 7px 14px;
-    margin: 10px 10px;
+    padding: 10px 18px;
+    margin: 5px 7px;
     cursor: pointer;
+    background: #007bff;
+    border: 1px solid grey;
+    border-radius: 10px;
 }
+
+.glow-on-hover {
+    width: 100px;
+    height: 40px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #292929;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+    color: #000
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+
+
+/* HTML: <div class="loader"></div> */
+/* HTML: <div class="loader"></div> */
+/* HTML: <div class="loader"></div> */
+.home-loader {
+    width: fit-content;
+    font-size: 40px;
+    line-height: 1.5;
+    font-family: system-ui,sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #0000;
+    -webkit-text-stroke: 1px #000;
+    background:
+      radial-gradient(1.13em at 50% 1.6em,#000 99%,#0000 101%) calc(50% - 1.6em) 0/3.2em 100% text,
+      radial-gradient(1.13em at 50% -0.8em,#0000 99%,#000 101%) 50% .8em/3.2em 100% repeat-x  text;
+    animation: l9 2s linear infinite;
+  }
+  .home-loader:before {
+    content: "Loading";
+  }
+  @keyframes l9 {
+    to {background-position: calc(50% + 1.6em) 0,calc(50% + 3.2em) .8em}
+  }
+
+
+  .post-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .post-card {
+    background-color: #1a1a1a;
+    border: 1px solid #444;
+    border-radius: 12px;
+    padding: 15px;
+    color: white;
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
+    transition: transform 0.2s ease;
+  }
+  
+  .post-card:hover {
+    transform: translateY(-2px);
+    border-color: #666;
+  }
+  
+  .post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .post-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #333;
+    margin-right: 10px;
+  }
+  
+  .post-user-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .post-username {
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  
+  .post-time {
+    font-size: 0.8rem;
+    color: #aaa;
+  }
+  
+  .post-body {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  

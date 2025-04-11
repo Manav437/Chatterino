@@ -47,8 +47,8 @@ function RegisterPage() {
 
     return (
         <div className="register-div">
-            <Link to="/"><img src="/home-logo-img.png" style={{ position: "absolute", left: "20px", top: "20px" }} alt="" /></Link>
-            <h1>REGISTER</h1>
+            <Link to="/"><img src="/mogul-moves.svg" style={{ position: "absolute", left: "20px", top: "20px", height: "100px" }} alt="" /></Link>
+            <h1>SIGN UP</h1>
             <form onSubmit={(e) => { e.preventDefault(); handleAddUser(); }}
                 style={{
                     display: "flex",
@@ -91,9 +91,10 @@ function RegisterPage() {
                     />
                 </label>
                 <button type="submit" style={{
+                    fontSize: "16px",
                     height: "35px",
                     cursor: "pointer",
-                    backgroundColor: "#4CAF50",
+                    backgroundColor: "#67AE6E",
                     color: "white",
                     border: "none",
                     borderRadius: "4px"
@@ -102,7 +103,7 @@ function RegisterPage() {
 
 
             {error && <p style={{ color: "red" }}>{error}</p>}  {/* Show error if any */}
-            <p>Already have an account? <Link to='/login' style={{ color: "green", textDecoration: "underline" }}>Login</Link></p>
+            <p>Already have an account? <Link to='/login' style={{ color: "#328E6E", textDecoration: "underline" }}>Sign-In</Link></p>
         </div>
     );
 }

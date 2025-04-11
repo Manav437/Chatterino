@@ -8,7 +8,7 @@ const firebaseConfig = {
     authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
     databaseURL: import.meta.env.VITE_FIREBASE_DB_URL,
     projectId: "social-media-417a7",
-    storageBucket: import.meta.env.VITE_FIREBASE_API_KEY,
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
     messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
     appId: import.meta.env.VITE_FIREBASE_APP_ID,
     measurementId: "G-TQDZ50QXWG"

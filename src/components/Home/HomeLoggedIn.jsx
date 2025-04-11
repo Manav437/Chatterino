@@ -6,27 +6,45 @@ import { getAuth, signOut } from "firebase/auth";
 import { useNavigate, Link } from "react-router-dom";
 import UserList from "../UserList"
 import { useLocation } from "react-router-dom";
-import ShimmerUI from "../Shimmer/Shimmer";
+// import ShimmerUI from "../Shimmer/Shimmer";
 import { useEffect, useState } from "react";
+import NewPostModal from "../NewPost/NewPostModal";
 
 function HomeLoggedIn() {
     const [users, setUsers] = useState([]);
-    const navigate = useNavigate();
+    const [posts, setPosts] = useState([]);
     const auth = getAuth();
     const [loading, setLoading] = useState(false);
-
+    const [showPostModal, setShowPostModal] = useState(false);
     const location = useLocation();
     const currentPath = location.pathname;
+    const navigate = useNavigate();
 
     useEffect(() => {
-        // Assume you store users in 'users' node
         const usersRef = ref(database, 'users');
         onValue(usersRef, (snapshot) => {
             const data = snapshot.val();
             const userList = Object.entries(data || {}).map(([uid, info]) => ({ uid, ...info }));
-            setUsers(userList.filter(u => u.uid !== auth.currentUser?.uid));
+            setUsers(userList); // ✅ This includes current user too
         });
     }, []);
+
+    useEffect(() => {
+        const postsRef = ref(database, 'posts');
+        onValue(postsRef, (snapshot) => {
+            const data = snapshot.val();
+            if (data) {
+                const postList = Object.entries(data).map(([postId, info]) => ({
+                    postId,
+                    ...info
+                }));
+                // Optional: Sort newest first
+                postList.sort((a, b) => b.createdAt - a.createdAt);
+                setPosts(postList);
+            }
+        });
+    }, []);
+
 
     useEffect(() => {
         const hasVisitedHome = localStorage.getItem("hasVisitedHome");
@@ -38,6 +56,10 @@ function HomeLoggedIn() {
             }, 500); // your shimmer duration
         }
     }, [])
+
+    const handleNewPost = () => {
+        setShowPostModal(true);
+    }
 
     function handleLogout() {
         signOut(auth)
@@ -51,36 +73,61 @@ function HomeLoggedIn() {
             });
     }
 
-    if (loading) return <ShimmerUI />
+    if (loading) {
+        return (<div style={{ marginTop: "35vh" }} className="home-loader"></div>)
+    }
     return (
         <div className="home-container">
             <div className="navbar">
                 <div className="home-logo" style={{ paddingBottom: "30px", borderBottom: "1px solid white" }}>
-                    <img style={{ height: "64px", width: "64px" }} src="/home-logo-img.png" alt="" />
+                    <img style={{ height: "64px", width: "64px" }} src="/mogul-moves-3.svg" alt="" />
                     <p style={{ marginTop: "10px", marginBottom: "0" }}>Chatterino</p>
                 </div>
                 {/* <hr style={{ width: "80%" }} /> */}
                 <div className="nav-items" style={{ width: "100%" }}>
                     <div className="nav-item">
-                        <Link to="/" className={`${currentPath === "/" ? "active" : ""} nav-links`}>Home</Link >
+                        <img style={{ height: "25px" }} src="/home-icon.png" alt="" />
+                        <Link style={{ fontWeight: "bold", minWidth: "70%", fontSize: "1.2rem" }} to="/" className={`${currentPath === "/" ? "active" : ""} nav-links`}>Home</Link >
                     </div>
                     <div className="nav-item">
-                        <Link to="/chats" className={`${currentPath === "chats" ? "active" : ""} nav-links`}>Chat</Link>
+                        <img style={{ height: "25px" }} src="/chat-icon.png" alt="" />
+                        <Link style={{ fontWeight: "bold", minWidth: "70%", fontSize: "1.2rem" }} to="/chats" className={`${currentPath === "chats" ? "active" : ""} nav-links`}>Chat</Link>
                     </div>
                     <div className="nav-item">
-                        <Link to="/profile" className={`${currentPath === "/profile" ? "active" : ""} nav-links`}>Profile</Link>
+                        <img style={{ height: "25px" }} src="/user-icon.png" alt="" />
+                        <Link style={{ fontWeight: "bold", minWidth: "70%", fontSize: "1.2rem" }} to="/profile" className={`${currentPath === "/profile" ? "active" : ""} nav-links`}>Profile</Link>
                     </div>
                 </div>
             </div >
             <div className="section-two">
-                <div style={{ borderBottom: "1px solid offwhite", background: "black" }}>
-                    Home Page
+                <div style={{ position: "fixed", top: "0", width: "47.5%", borderBottom: "1px solid offwhite", background: "#1D1616", lineHeight: "2rem", fontSize: "20px", paddingTop: "20px", paddingBottom: "20px" }}>
+                    HOME
                 </div>
-                <Feed /><Feed /><Feed /><Feed /><Feed /><Feed /><Feed /><Feed /><Feed /><Feed /><Feed />
+                <div className="post-feed" style={{ marginTop: "80px" }}>
+                    {posts.map((post) => {
+                        const postUser = users.find(u => u.uid === post.userId);
+                        return (
+                            <div key={post.postId} className="post-card">
+                                <div className="post-header">
+                                    <img src={postUser?.photoURL || "/user-icon.png"} alt="user" className="post-avatar" />
+                                    <div className="post-user-info">
+                                        <p className="post-username">{postUser?.name || post.userId}</p>
+                                        <p className="post-time">{new Date(post.createdAt).toLocaleString()}</p>
+                                    </div>
+                                </div>
+                                <div className="post-body">
+                                    <p>{post.content}</p>
+                                </div>
+                            </div>
+                        )
+                    })}
+                </div>
+
             </div>
             <div className="section-three">
-                <div style={{ borderBottom: "1px solid white", paddingLeft: "5px" }}>
-                    <button onClick={handleLogout} style={{ margin: "10px", border: "1px solid white", padding: "5px 10px", cursor: "pointer" }}>Logout</button>
+                <div style={{ marginTop: "10px", display: "flex", alignItems: "center", justifyContent: "center", borderBottom: "1px solid white", paddingLeft: "5px" }}>
+                    <button onClick={handleNewPost}>New Post</button>
+                    <button className="home-logout-btn bg-red-500" onClick={handleLogout} style={{ display: "flex", alignItems: "center", justifyContent: "center", margin: "10px", border: "1px solid white", padding: "5px 10px", cursor: "pointer", marginBottom: "30px" }}><img style={{ height: "15px", marginRight: "5px" }} src="/logout-icon.png" />Logout</button>
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginTop: "20px" }}>
                     <h2>Connect with these users</h2>
@@ -91,7 +138,10 @@ function HomeLoggedIn() {
                     ))}
                 </div>
             </div>
+            {showPostModal && <NewPostModal onClose={() => setShowPostModal(false)} />}
+
         </div >
+
     )
 }
 
