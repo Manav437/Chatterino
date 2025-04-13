@@ -100,15 +100,17 @@ function HomeLoggedIn() {
                 </div>
             </div >
             <div className="section-two">
-                <div style={{ position: "fixed", top: "0", width: "47.5%", borderBottom: "1px solid offwhite", background: "#1D1616", lineHeight: "2rem", fontSize: "20px", paddingTop: "20px", paddingBottom: "20px" }}>
+                <div style={{ position: "fixed", top: "0", width: "47.5%", borderBottom: "1px solid white", background: "#1a1a1a", lineHeight: "2rem", fontSize: "20px", paddingTop: "20px", paddingBottom: "20px" }}>
                     HOME
                 </div>
                 <div className="post-feed" style={{ marginTop: "80px" }}>
                     {posts.map((post) => {
                         const postUser = users.find(u => u.uid === post.userId);
+                        {/* console.log(postUser) */ }
                         return (
                             <div key={post.postId} className="post-card">
                                 <div className="post-header">
+                                    {console.log(postUser.photoURL)}
                                     <img src={postUser?.photoURL || "/user-icon.png"} alt="user" className="post-avatar" />
                                     <div className="post-user-info">
                                         <p className="post-username">{postUser?.name || post.userId}</p>
@@ -125,10 +127,50 @@ function HomeLoggedIn() {
 
             </div>
             <div className="section-three">
-                <div style={{ marginTop: "10px", display: "flex", alignItems: "center", justifyContent: "center", borderBottom: "1px solid white", paddingLeft: "5px" }}>
-                    <button onClick={handleNewPost}>New Post</button>
-                    <button className="home-logout-btn bg-red-500" onClick={handleLogout} style={{ display: "flex", alignItems: "center", justifyContent: "center", margin: "10px", border: "1px solid white", padding: "5px 10px", cursor: "pointer", marginBottom: "30px" }}><img style={{ height: "15px", marginRight: "5px" }} src="/logout-icon.png" />Logout</button>
+                <div style={{
+                    marginTop: "10px",
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    borderBottom: "1px solid white",
+                    paddingLeft: "5px",
+                    gap: "10px",
+                    paddingBottom: "20px"
+                }}>
+                    <button
+                        className="home-addpost-btn"
+                        onClick={handleNewPost}
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            border: "1px solid white",
+                            padding: "5px 10px",
+                            cursor: "pointer"
+                        }}
+                    >
+                        <img style={{ height: "15px", marginRight: "5px" }} src="/add-logo.png" alt="" />
+                        New Post
+                    </button>
+
+                    <button
+                        className="home-logout-btn bg-red-500"
+                        onClick={handleLogout}
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            border: "1px solid white",
+                            padding: "5px 10px",
+                            cursor: "pointer"
+                        }}
+                    >
+                        <img style={{ height: "15px", marginRight: "5px" }} src="/logout-icon.png" alt="" />
+                        Logout
+                    </button>
                 </div>
+
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginTop: "20px" }}>
                     <h2>Connect with these users</h2>
                     {users.map((u) => (

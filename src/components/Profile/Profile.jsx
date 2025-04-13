@@ -63,6 +63,7 @@ const ProfilePage = () => {
             const updatedData = {
                 name: updatedName,
                 bio: updatedBio,
+                photoURL: updatedPhoto,
             };
 
             if (speaks.length > 0) updatedData.speaks = speaks;
@@ -73,6 +74,7 @@ const ProfilePage = () => {
             setDisplayName(updatedName);
             setDisplayPhoto(updatedPhoto);
             setDisplayBio(updatedBio);
+            setDisplayPhoto(updatedPhoto);
             if (speaks.length > 0) setDisplaySpeaks(speaks);
             if (learning.length > 0) setDisplayLearning(learning);
 
@@ -197,7 +199,7 @@ const ProfilePage = () => {
                             backgroundColor: "#BDDDE4",
                             // textAlign: "center"
                         }}>
-                            <h2 style={{ marginBottom: "20px", color: "#333", textAlign: "center" }}>🛠️ Update Your Details</h2>
+                            <h2 style={{ marginBottom: "20px", color: "#333", textAlign: "center" }}>⛭ Update Your Details</h2>
 
                             <input
                                 type="text"
