@@ -80,7 +80,7 @@ function ChatsPage() {
     };
 
     return (
-        <div style={{ display: "flex", width: "95vw", height: "90vh" }}>
+        <div style={{ display: "flex", width: "95vw", height: "100vh" }}>
             {/* Sidebar Navigation */}
             <div className="navbar">
                 <div className="home-logo" style={{ paddingBottom: "30px", borderBottom: "1px solid white" }}>
@@ -110,7 +110,6 @@ function ChatsPage() {
                         #{lang}
                     </div>
                 ))}
-
             </div>
 
             {/* Main Chat Section */}

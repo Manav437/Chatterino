@@ -1,0 +1,16 @@
+.login-div > form > label > input {
+    outline: none;
+    border: 1px solid #2C2C2C;
+    border-radius: 5px;
+}
+
+.login-div > form > label > input:focus {
+    outline: none;
+    border: 1px solid #2C2C2C;
+    background: #000000;
+    color: white;
+}
+
+/* .login-btn:hover {
+    background: #fff;
+} */

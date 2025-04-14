@@ -46,64 +46,66 @@ function RegisterPage() {
     };
 
     return (
-        <div className="register-div">
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "90vh" }}>
             <Link to="/"><img src="/mogul-moves.svg" style={{ position: "absolute", left: "20px", top: "20px", height: "100px" }} alt="" /></Link>
-            <h1>SIGN UP</h1>
-            <form onSubmit={(e) => { e.preventDefault(); handleAddUser(); }}
-                style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "15px",
-                    minWidth: "300px"
-                }}>
-                <label style={{ display: "flex", flexDirection: "column" }}>
-                    Name
-                    <input className="register-input"
-                        placeholder="Enter a username"
-                        style={{ height: "30px", padding: "5px" }}
-                        type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        required
-                    />
-                </label>
-                <label style={{ display: "flex", flexDirection: "column" }}>
-                    Email
-                    <input
-                        className="register-input"
-                        placeholder="Enter your email"
-                        style={{ height: "30px", padding: "5px" }}
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
-                </label>
-                <label style={{ display: "flex", flexDirection: "column" }}>
-                    Password
-                    <input
-                        placeholder="Enter strong password"
-                        style={{ height: "30px", padding: "5px" }}
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                </label>
-                <button type="submit" style={{
-                    fontSize: "16px",
-                    height: "35px",
-                    cursor: "pointer",
-                    backgroundColor: "#67AE6E",
-                    color: "white",
-                    border: "none",
-                    borderRadius: "4px"
-                }}>Sign Up</button>
-            </form>
+            <div className="register-div" style={{ borderRadius: "20px", padding: "20px", border: "3px solid #2C2C2C", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "60%", gap: "20px" }}>
+                <h1>SIGN UP</h1>
+                <form onSubmit={(e) => { e.preventDefault(); handleAddUser(); }}
+                    style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "15px",
+                        minWidth: "300px"
+                    }}>
+                    <label style={{ display: "flex", flexDirection: "column" }}>
+                        Name
+                        <input className="register-input"
+                            placeholder="Enter a username"
+                            style={{ height: "30px", padding: "5px", paddingLeft: "10px" }}
+                            type="text"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            required
+                        />
+                    </label>
+                    <label style={{ display: "flex", flexDirection: "column" }}>
+                        Email
+                        <input
+                            className="register-input"
+                            placeholder="Enter your email"
+                            style={{ height: "30px", padding: "5px", paddingLeft: "10px" }}
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                    </label>
+                    <label style={{ display: "flex", flexDirection: "column" }}>
+                        Password
+                        <input
+                            placeholder="Enter strong password"
+                            style={{ height: "30px", padding: "5px", paddingLeft: "10px" }}
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                    </label>
+                    <button type="submit" style={{
+                        fontSize: "16px",
+                        height: "35px",
+                        cursor: "pointer",
+                        backgroundColor: "#67AE6E",
+                        color: "white",
+                        border: "none",
+                        borderRadius: "4px"
+                    }}>Sign Up</button>
+                </form>
 
 
-            {error && <p style={{ color: "red" }}>{error}</p>}  {/* Show error if any */}
-            <p>Already have an account? <Link to='/login' style={{ color: "#328E6E", textDecoration: "underline" }}>Sign-In</Link></p>
+                {error && <p style={{ color: "red" }}>{error}</p>}  {/* Show error if any */}
+                <p>Already have an account? <Link to='/login' style={{ color: "#328E6E", textDecoration: "underline" }}>Login</Link></p>
+            </div>
         </div>
     );
 }

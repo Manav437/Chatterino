@@ -46,26 +46,32 @@ function HomeNotLoggedIn() {
             <div style={{ borderTop: "2px solid #2C2C2C" }}>
                 <h1>Features</h1>
                 <div style={{ display: "flex", justifyContent: "flex-start", margin: "0", marginBottom: "10px" }}>
-                    <div style={{ background: "#030303", marginLeft: "20px", border: "3px solid #2C2C2C", borderRadius: "20px", display: "flex", flexDirection: "column", justifyContent: "center", height: "520px", width: "500px" }}>
-                        <h3>POSTS</h3>
-                        <img style={{ borderRadius: "10px", border: "1px solid grey", margin: "0 auto", height: "400px", width: "80%" }} src="/feed-posts-img.png" alt="" />
-                        <p style={{ paddingTop: "10px", margin: "0 auto", width: "70%" }}>Post your daily thoughts, share your moments, and connect with friends.</p>
+                    <div style={{ background: "#030303", marginLeft: "20px", border: "3px solid #2C2C2C", borderRadius: "20px", display: "flex", flexDirection: "column", justifyContent: "center", height: "520px", width: "80%" }}>
+                        <h3 style={{ marginTop: "0", textDecoration: "underline", textUnderlineOffset: "4px" }}>POSTS</h3>
+                        <div style={{ display: "flex", width: "100%" }}>
+                            <img style={{ borderRadius: "10px", border: "1px solid grey", marginLeft: "20px", height: "400px", width: "55%" }} src="/feed-posts-img.png" alt="" />
+                            <p style={{ paddingLeft: "10px", paddingTop: "10px", margin: "20% auto", width: "45%" }}>Post your daily thoughts, share your moments, and connect with friends.</p>
+                        </div>
                     </div>
                 </div>
 
                 <div style={{ display: "flex", justifyContent: "flex-end", margin: "0", marginBottom: "10px" }}>
-                    <div style={{ background: "#030303", marginRight: "20px", border: "3px solid #2C2C2C", borderRadius: "20px", display: "flex", flexDirection: "column", justifyContent: "center", height: "520px", width: "500px" }}>
-                        <h3>CHATROOMS</h3>
-                        <img style={{ borderRadius: "10px", border: "1px solid grey", margin: "0 auto", height: "400px", width: "80%" }} src="/chatroom-img.png" alt="" />
-                        <p style={{ paddingTop: "10px", margin: "0 auto", width: "70%" }}>Auto-generated chatrooms based on the languages you speak and learn — instantly connect with people who vibe like you.</p>
+                    <div style={{ background: "#030303", marginRight: "20px", border: "3px solid #2C2C2C", borderRadius: "20px", display: "flex", flexDirection: "column", justifyContent: "center", height: "520px", width: "80%" }}>
+                        <h3 style={{ marginTop: "0", textDecoration: "underline", textUnderlineOffset: "4px" }}>CHATROOMS</h3>
+                        <div style={{ display: "flex" }}>
+                            <img style={{ marginLeft: "20px", borderRadius: "10px", border: "1px solid grey", height: "400px", width: "65%" }} src="/chatroom-img.png" alt="" />
+                            <p style={{ paddingLeft: "10px", paddingTop: "10px", margin: "15% auto", width: "35%" }}>Auto-generated chatrooms based on the languages you speak and learn — instantly connect with people who vibe like you.</p>
+                        </div>
                     </div>
                 </div>
 
                 <div style={{ display: "flex", justifyContent: "flex-start", margin: "0", marginBottom: "10px" }}>
-                    <div style={{ background: "#030303", marginLeft: "20px", border: "3px solid #2C2C2C", borderRadius: "20px", display: "flex", flexDirection: "column", justifyContent: "center", height: "520px", width: "500px" }}>
-                        <h3>CUSTOMISE PROFILE</h3>
-                        <img style={{ borderRadius: "10px", border: "1px solid grey", margin: "0 auto", height: "400px", width: "90%" }} src="/update-profile-img1.png" alt="" />
-                        <p style={{ paddingTop: "10px", margin: "0 auto", width: "70%" }}>Customise your profile with a unique username, bio, and profile picture.</p>
+                    <div style={{ background: "#030303", marginLeft: "20px", border: "3px solid #2C2C2C", borderRadius: "20px", display: "flex", flexDirection: "column", justifyContent: "center", height: "520px", width: "80%" }}>
+                        <h3 style={{ margin: "0", textDecoration: "underline", textUnderlineOffset: "4px" }}>CUSTOMISE PROFILE</h3>
+                        <div style={{ marginTop: "10px", display: "flex" }}>
+                            <img style={{ marginLeft: "20px", borderRadius: "10px", border: "1px solid grey", height: "400px", width: "65%" }} src="/update-profile-img1.png" alt="" />
+                            <p style={{ paddingLeft: "10px", paddingTop: "10px", margin: "20% auto", width: "35%" }}>Customise your profile with a unique username, bio, and profile picture.</p>
+                        </div>
                     </div>
                 </div>
             </div>

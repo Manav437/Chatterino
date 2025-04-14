@@ -14,6 +14,7 @@
     display: flex;
     flex-direction: row;
     min-height: 90vh;
+    height: 100vh;
     align-items: center;
     justify-content: space-between;
 }
@@ -24,6 +25,7 @@
 
 .navbar {
     min-width: 25%;
+    height: 100vh;
     min-height: 90vh;
     display: flex;
     flex-direction: column;
@@ -77,13 +79,16 @@
     min-width: 50%;
     scrollbar-width:none;
     max-height: 90vh;
+    height: 100vh;
     overflow-y: scroll;
 }
 
 .section-three {
+    height: 100vh;
     min-width: 25%;
     min-height: 90vh;
     border-left: 3px solid rgb(45, 194, 227);
+    /* padding-top: 50px; */
 }
 
 .home-addpost-btn {

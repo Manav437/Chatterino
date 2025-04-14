@@ -106,8 +106,8 @@ function HomeLoggedIn() {
                 </div>
             </div >
             <div className="section-two">
-                <div style={{ position: "fixed", top: "0", width: "47.5%", borderBottom: "1px solid white", background: "#1a1a1a", lineHeight: "2rem", fontSize: "20px", paddingTop: "20px", paddingBottom: "20px" }}>
-                    HOME
+                <div style={{ zIndex: "1000", height: "20px", position: "fixed", top: "0", width: "47.5%", borderBottom: "1px solid white", background: "rgba(26, 26, 26, 0.8)", lineHeight: "2rem", fontSize: "20px", paddingTop: "20px", paddingBottom: "20px" }}>
+                    <h5 style={{ margin: "0" }}>HOME</h5>
                 </div>
                 <div className="post-feed" style={{ marginTop: "80px" }}>
                     {posts.map((post) => {
@@ -134,13 +134,15 @@ function HomeLoggedIn() {
             </div>
             <div className="section-three">
                 <div style={{
-                    marginTop: "10px",
                     display: "flex",
                     flexDirection: "row",
                     alignItems: "center",
                     justifyContent: "center",
                     borderBottom: "1px solid white",
+                    width: "80%",
+                    margin: "20px auto",
                     paddingLeft: "5px",
+                    marginBottom: "10px",
                     gap: "10px",
                     paddingBottom: "20px"
                 }}>
