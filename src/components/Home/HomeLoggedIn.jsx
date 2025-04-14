@@ -13,6 +13,7 @@ import NewPostModal from "../NewPost/NewPostModal";
 function HomeLoggedIn() {
     const [users, setUsers] = useState([]);
     const [posts, setPosts] = useState([]);
+    const [showAlert, setShowAlert] = useState(false);
     const auth = getAuth();
     const [loading, setLoading] = useState(false);
     const [showPostModal, setShowPostModal] = useState(false);
@@ -73,6 +74,11 @@ function HomeLoggedIn() {
             });
     }
 
+    const triggerAlert = () => {
+        setShowAlert(true);
+        setTimeout(() => setShowAlert(false), 2000); // Hide after 3s
+    };
+
     if (loading) {
         return (<div style={{ marginTop: "35vh" }} className="home-loader"></div>)
     }
@@ -110,7 +116,7 @@ function HomeLoggedIn() {
                         return (
                             <div key={post.postId} className="post-card">
                                 <div className="post-header">
-                                    {console.log(postUser.photoURL)}
+                                    {/* {console.log(postUser.photoURL)} */}
                                     <img src={postUser?.photoURL || "/user-icon.png"} alt="user" className="post-avatar" />
                                     <div className="post-user-info">
                                         <p className="post-username">{postUser?.name || post.userId}</p>
@@ -174,10 +180,14 @@ function HomeLoggedIn() {
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginTop: "20px" }}>
                     <h2>Connect with these users</h2>
                     {users.map((u) => (
-                        <div key={u.uid} className="chat-user-div" onClick={() => setSelectedUser(u)} style={{ width: "70%", padding: "5px", border: "1px solid white", borderRadius: "10px", cursor: "pointer", margin: "5px 0" }}>
+                        <div key={u.uid} className="chat-user-div" onClick={triggerAlert} style={{ width: "70%", padding: "5px", border: "1px solid white", borderRadius: "10px", cursor: "pointer", margin: "5px 0" }}>
                             {u.name || <u className="email"></u>}
                         </div>
                     ))}
+
+                    <div className={`custom-alert ${showAlert ? "show" : ""}`}>
+                        Friend request sent! ✉️
+                    </div>
                 </div>
             </div>
             {showPostModal && <NewPostModal onClose={() => setShowPostModal(false)} />}

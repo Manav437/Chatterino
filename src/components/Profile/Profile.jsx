@@ -28,6 +28,7 @@ const ProfilePage = () => {
 
     useEffect(() => {
         const currentUser = auth.currentUser;
+        console.log(currentUser)
         if (currentUser) {
             setUser(currentUser);
             setDisplayName(currentUser.displayName || "");
@@ -50,6 +51,7 @@ const ProfilePage = () => {
     const updateUserProfile = async () => {
         try {
             const currentUser = auth.currentUser;
+
             const updatedName = name.trim() !== "" ? name : currentUser.displayName;
             const updatedPhoto = photo.trim() !== "" ? photo : currentUser.photoURL;
             const updatedBio = bio.trim() !== "" ? bio : displayBio;
@@ -137,7 +139,7 @@ const ProfilePage = () => {
                             textAlign: "center"
                         }}>
                             <img
-                                src={displayPhoto || "/default-avatar.png"}
+                                src={displayPhoto || "/noimg-icon.png"}
                                 alt="Profile"
                                 style={{
                                     height: "100px",
@@ -145,7 +147,8 @@ const ProfilePage = () => {
                                     borderRadius: "50%",
                                     objectFit: "cover",
                                     border: "3px solid rgb(69, 70, 69)",
-                                    padding: "2px",
+                                    padding: "3px",
+                                    background: "white",
                                     marginBottom: "20px"
                                 }}
                             />

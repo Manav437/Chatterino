@@ -1,11 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
-
+import Footer from "../Footer/Footer"
 
 function HomeNotLoggedIn() {
     const navigate = useNavigate()
     return (
         <div className="home-not-logged-in" style={{ textAlign: "center", margin: "0 auto", minWidth: "500px" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", height: "100px", borderBottom: "1px solid #2C2C2C", paddingBottom: "10px" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", height: "100px", borderBottom: "2px solid #2C2C2C", paddingBottom: "10px" }}>
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-end", height: "100%" }}>
                     <h3 style={{ margin: "0", paddingLeft: "5px" }}>mnv</h3>
                     <h3 style={{ margin: "0" }}>gsn</h3>
@@ -22,7 +22,7 @@ function HomeNotLoggedIn() {
 
 
             <h1 className="home-header" style={{ width: "100%", fontSize: "9.5rem", marginTop: "0", marginBottom: "0" }}>CHATTERINO</h1>
-            <p style={{ fontStyle: "italic" }}>💬 Connect. Chat. Share. Your world, your way.</p>
+            <p style={{ fontStyle: "italic", color: "#E3D2C3", fontSize: "1.5rem" }}>💬 Connect. Chat. Share. Your world, your way.</p>
 
             {/* <hr style={{ width: "60%", border: "none", height: "2px", background: "#8E7DBE" }} />
 
@@ -32,7 +32,7 @@ function HomeNotLoggedIn() {
 
             <hr style={{ width: "95%", border: "none", height: "2px", background: "#2C2C2C" }} />
             <div className="get-started">
-                <h3>Let's get you started!</h3>
+                <h3 style={{ color: "#FDFAF6", fontSize: "1.3rem" }}>Let's get you started!</h3>
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <button className="glow-on-hover" onClick={(e) => navigate("/register")}>Sign Up</button>
                     <button className="glow-on-hover" onClick={(e) => navigate("/login")}>Sign In</button>
@@ -40,13 +40,37 @@ function HomeNotLoggedIn() {
 
             </div>
 
-            <img style={{ maxWidth: "98%", marginTop: "20px", height: "70vh", width: "100%", borderRadius: "10px" }}
+            <img style={{ maxWidth: "98%", marginTop: "20px", height: "70vh", width: "100%", borderRadius: "2   0px" }}
                 src="https://framerusercontent.com/images/CDNP3QX8DV14r9QNpxxQYRDunY.png?scale-down-to=4096" alt="" />
 
-            <div style={{ textAlign: "center" }}>
-                <p>By signing up, you agree to our <a style={{ color: "lightgreen" }} href="#">Terms of Service</a> and <a style={{ color: "lightgreen" }} href="#">Privacy Policy</a>.</p>
-                Connect with us on <Link style={{ color: "#8E7DBE" }} to="https://x.com/manav437">@manav437 on X</Link>
+            <div style={{ borderTop: "2px solid #2C2C2C" }}>
+                <h1>Features</h1>
+                <div style={{ display: "flex", justifyContent: "flex-start", margin: "0", marginBottom: "10px" }}>
+                    <div style={{ background: "#030303", marginLeft: "20px", border: "3px solid #2C2C2C", borderRadius: "20px", display: "flex", flexDirection: "column", justifyContent: "center", height: "520px", width: "500px" }}>
+                        <h3>POSTS</h3>
+                        <img style={{ borderRadius: "10px", border: "1px solid grey", margin: "0 auto", height: "400px", width: "80%" }} src="/feed-posts-img.png" alt="" />
+                        <p style={{ paddingTop: "10px", margin: "0 auto", width: "70%" }}>Post your daily thoughts, share your moments, and connect with friends.</p>
+                    </div>
+                </div>
+
+                <div style={{ display: "flex", justifyContent: "flex-end", margin: "0", marginBottom: "10px" }}>
+                    <div style={{ background: "#030303", marginRight: "20px", border: "3px solid #2C2C2C", borderRadius: "20px", display: "flex", flexDirection: "column", justifyContent: "center", height: "520px", width: "500px" }}>
+                        <h3>CHATROOMS</h3>
+                        <img style={{ borderRadius: "10px", border: "1px solid grey", margin: "0 auto", height: "400px", width: "80%" }} src="/chatroom-img.png" alt="" />
+                        <p style={{ paddingTop: "10px", margin: "0 auto", width: "70%" }}>Auto-generated chatrooms based on the languages you speak and learn — instantly connect with people who vibe like you.</p>
+                    </div>
+                </div>
+
+                <div style={{ display: "flex", justifyContent: "flex-start", margin: "0", marginBottom: "10px" }}>
+                    <div style={{ background: "#030303", marginLeft: "20px", border: "3px solid #2C2C2C", borderRadius: "20px", display: "flex", flexDirection: "column", justifyContent: "center", height: "520px", width: "500px" }}>
+                        <h3>CUSTOMISE PROFILE</h3>
+                        <img style={{ borderRadius: "10px", border: "1px solid grey", margin: "0 auto", height: "400px", width: "90%" }} src="/update-profile-img1.png" alt="" />
+                        <p style={{ paddingTop: "10px", margin: "0 auto", width: "70%" }}>Customise your profile with a unique username, bio, and profile picture.</p>
+                    </div>
+                </div>
             </div>
+
+            <Footer />
 
         </div >
     )

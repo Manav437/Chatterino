@@ -1,0 +1,71 @@
+.marquee {
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  
+  .marquee-content {
+    display: inline-flex;
+    animation: scroll-left 12s linear infinite;
+  }
+  
+  .marquee-content h1 {
+    display: inline-block;
+    margin: 0 30px;
+    font-size: 40px;
+  }
+  
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+
+
+.h1-one {
+    font-family: "Notable", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.h1-two {
+    font-family: "Plaster", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.h1-three{ 
+    font-family: "Press Start 2P", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.h1-four {
+    font-family: "Nabla", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "EDPT" 100,
+    "EHLT" 12;
+}
+
+p > a {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color:rgb(170, 169, 169);
+}
+
+.footer-links > p {
+  margin:0;
+  padding: 0;
+  margin-top: 10px;
+}
+
+p > a:hover {
+  color:rgb(210, 205, 205);
+}
