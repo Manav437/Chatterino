@@ -45,29 +45,35 @@ function HomeNotLoggedIn() {
             <div className="features">
                 <h1>Features</h1>
                 <div className="feature-one">
-                    <div className="one-img-div">
-                        <h3 style={{ marginTop: "0", textDecoration: "underline", textUnderlineOffset: "4px" }}>POSTS</h3>
-                        <img src="/feed-posts-img.png" alt="" />
+                    <div style={{ width: "70%", display: "flex", flexDirection: "row", alignItems: "center" }}>
+                        <div className="one-img-div">
+                            <h3 style={{ marginTop: "0", textDecoration: "underline", textUnderlineOffset: "4px" }}>POSTS</h3>
+                            <img src="/feed-posts-img.png" alt="" />
+                        </div>
+                        <p>Post your daily thoughts, share your moments, and connect with friends.</p>
                     </div>
-                    <p>Post your daily thoughts, share your moments, and connect with friends.</p>
                 </div>
 
                 <div className="feature-two">
-                    <p>Auto-generated chatrooms based on the languages you speak and learn — instantly connect with people who vibe like you.</p>
-                    <div className="two-img-div">
-                        <h3 style={{ marginTop: "0", textDecoration: "underline", textUnderlineOffset: "4px" }}>CHATROOMS</h3>
-                        <img src="/chatroom-img.png" alt="" />
+                    <div style={{ width: "70%", display: "flex", flexDirection: "row", alignItems: "center" }}>
+                        <p>Auto-generated chatrooms based on the languages you speak and learn — instantly connect with people who vibe like you.</p>
+                        <div className="two-img-div">
+                            <h3 style={{ marginTop: "0", textDecoration: "underline", textUnderlineOffset: "4px" }}>CHATROOMS</h3>
+                            <img src="/chatroom-img.png" alt="" />
+                        </div>
                     </div>
                 </div>
 
                 <div className="feature-three">
-                    <div className="three-img-div">
-                        <h3 style={{ margin: "0", textDecoration: "underline", textUnderlineOffset: "4px" }}>CUSTOMISE PROFILE</h3>
-                        <div style={{ margin: "10px", display: "flex" }}>
-                            <img src="/update-profile-img1.png" alt="" />
+                    <div style={{ width: "70%", display: "flex", flexDirection: "row", alignItems: "center" }}>
+                        <div className="three-img-div">
+                            <h3 style={{ margin: "0", textDecoration: "underline", textUnderlineOffset: "4px" }}>CUSTOMISE PROFILE</h3>
+                            <div style={{ margin: "10px", display: "flex" }}>
+                                <img src="/update-profile-img1.png" alt="" />
+                            </div>
                         </div>
+                        <p>Customise your profile with a unique username, bio, and profile picture.</p>
                     </div>
-                    <p>Customise your profile with a unique username, bio, and profile picture.</p>
                 </div>
             </div>
 

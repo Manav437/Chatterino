@@ -21,16 +21,22 @@ function App() {
 			setIsLoggedIn(!!user); // Convert user object to boolean (IMPPPPP)
 			setTimeout(() => {
 				setLoading(false);
-			}, 500);
+			}, 1500);
 		});
 
 		return () => unsubscribe();
 	}, []);
 
 	if (loading) return (
-		<div style={{ height: "90vh", width: "100vw", margin: "40% auto" }}>
-			<span class="loader"></span>
-		</div>
+		<div style={{
+			height: "100vh",
+			width: "100vw",
+			display: "flex",
+			justifyContent: "center",
+			alignItems: "center",
+		}}>
+			<span style={{ margin: "auto" }} className="loader"></span>
+		</div >
 
 	)
 	return (

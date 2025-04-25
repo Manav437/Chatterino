@@ -16,7 +16,7 @@ function HomeLoggedIn() {
     const [posts, setPosts] = useState([]);
     const [showAlert, setShowAlert] = useState(false);
     const auth = getAuth();
-    // const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [showPostModal, setShowPostModal] = useState(false);
     const location = useLocation();
     const currentPath = location.pathname;
@@ -161,16 +161,34 @@ function HomeLoggedIn() {
                             <div key={post.postId} className="post-card">
                                 <div className="post-header">
                                     {/* {console.log(postUser.photoURL)} */}
-                                    <img src={postUser?.photoURL || "/user-icon.png"} alt="user" className="post-avatar" />
+                                    <img src={postUser?.photoURL || "./user-icon.png"} alt="user" className="post-avatar" />
                                     <div className="post-user-info">
                                         <p className="post-username">{postUser?.name || post.userId}</p>
-                                        <p className="post-time">{new Date(post.createdAt).toLocaleString()}</p>
+                                        <p className="post-time">{new Date(post.createdAt).toLocaleString('en-IN', {
+                                            year: "numeric",
+                                            month: 'short',
+                                            day: 'numeric',
+                                            hour: '2-digit',
+                                            minute: '2-digit',
+                                        })}</p>
                                     </div>
 
-                                    <div style={{ margin: " auto", display: "flex" }}>
-                                        <button onClick={() => handleAddLike(post.postId, post.likes)} style={{ display: "flex", alignItems: "center", margin: "0 10px" }}>
-                                            <img src="/like-img.png" alt="" />
-                                            {post.likes && post.likes[auth.currentUser.uid] ? "Unlike" : "Like"}
+                                    <div style={{
+                                        margin: "auto", display: "flex", justifyContent: "center", alignItems: "center", padding: "10px 0"
+                                    }}>
+                                        <button onClick={() => handleAddLike(post.postId, post.likes)} style={{
+                                            fontSize: "17px",
+                                            display: "flex",
+                                            alignItems: "center",
+                                            padding: "5px 10px",
+                                            cursor: "pointer",
+                                            background: "#2c2c2c",
+                                            border: "1px solid white",
+                                            borderRadius: "10px",
+                                            color: "inherit"
+                                        }}>
+                                            {/* <img src="/like-img.png" alt="" /> */}
+                                            {post.likes && post.likes[auth.currentUser.uid] ? "👎🏻 Dislike" : "👍🏻 Like"}
                                             ({post.likes ? Object.values(post.likes).filter(v => v === true).length : 0})
                                         </button>
                                     </div>

@@ -2,8 +2,8 @@ import "./Footer.css"
 
 function Footer() {
     return (
-        <div style={{ display: "flex", flexDirection: "column", borderTop: "2px solid #2C2C2C" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", paddingTop: "20px" }}>
+        <div style={{ display: "flex", alignItems: "center", flexDirection: "column", borderTop: "2px solid #2C2C2C" }}>
+            <div style={{ textAlign: "center", display: "flex", justifyContent: "space-between", paddingTop: "20px", width: "80%" }}>
                 <div className="footer-links" style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", flexDirection: "column", paddingLeft: "20px" }} >
                     <p style={{ marginBottom: "20px" }}><strong>SOCIALS</strong></p>
                     <p><a target="_blank" href="https://www.instagram.com/_man.av/">Insta</a></p>
@@ -27,20 +27,22 @@ function Footer() {
                 </div>
             </div>
 
-            <div className="marquee" style={{ margin: "20px", paddingTop: "20px", borderTop: "2px solid #2C2C2C" }}>
+            <div className="marquee" style={{ width: "95%", margin: "20px", paddingTop: "20px", borderTop: "2px solid #2C2C2C" }}>
                 <div className="marquee-content">
                     <h1 className="h1-one">CHATTERINO</h1>
                     <h1 className="h1-two">CHATTERINO</h1>
                     <h1 className="h1-three">CHATTERINO</h1>
                     <h1 className="h1-four">CHATTERINO</h1>
+                    <h1 className="h1-five">CHATTERINO</h1>
                     <h1 className="h1-one">CHATTERINO</h1>
                     <h1 className="h1-two">CHATTERINO</h1>
                     <h1 className="h1-three">CHATTERINO</h1>
                     <h1 className="h1-four">CHATTERINO</h1>
+                    <h1 className="h1-five">CHATTERINO</h1>
                 </div>
             </div>
 
-        </div>
+        </div >
     )
 }
 

@@ -4,17 +4,21 @@
   }
   
   .marquee-content {
-    display: inline-flex;
-    animation: scroll-left 12s linear infinite;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    animation: scroll 10s linear infinite;
   }
+
+
   
-  .marquee-content h1 {
+.marquee-content h1 {
     display: inline-block;
-    margin: 0 30px;
-    font-size: 40px;
-  }
+    margin: 0 20px;
+    font-size: 35px;
+}
   
-  @keyframes scroll-left {
+  @keyframes scroll {
     0% {
       transform: translateX(0%);
     }
@@ -26,7 +30,7 @@
 
 
 .h1-one {
-    font-family: "Notable", sans-serif;
+  font-family: "Notable", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -51,6 +55,12 @@
   font-variation-settings:
     "EDPT" 100,
     "EHLT" 12;
+}
+
+.h1-five {
+  font-family: "Train One", system-ui;
+  font-weight: 400;
+  font-style: normal;
 }
 
 p > a {
