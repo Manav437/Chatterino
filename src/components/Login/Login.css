@@ -1,3 +1,17 @@
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+}
+
+.login-container img {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    height: 100px;
+}
+
 .login-div > form > label > input {
     outline: none;
     border: 1px solid #2C2C2C;
@@ -11,6 +25,13 @@
     color: white;
 }
 
-/* .login-btn:hover {
-    background: #fff;
-} */
+@media screen and (max-width: 425px){
+    .login-container {
+        margin: 0 auto;
+        width: 90%;
+    }
+
+    .login-container img {
+        height: 70px;
+    }
+}

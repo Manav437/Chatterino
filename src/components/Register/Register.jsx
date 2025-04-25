@@ -46,11 +46,11 @@ function RegisterPage() {
     };
 
     return (
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "90vh" }}>
-            <Link to="/"><img src="/mogul-moves.svg" style={{ position: "absolute", left: "20px", top: "20px", height: "100px" }} alt="" /></Link>
-            <div className="register-div" style={{ borderRadius: "20px", padding: "20px", border: "3px solid #2C2C2C", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "60%", gap: "20px" }}>
+        <div className="register-container">
+            <Link to="/"><img src="/mogul-moves.svg" alt="" /></Link>
+            <div className="register-div">
                 <h1>SIGN UP</h1>
-                <form onSubmit={(e) => { e.preventDefault(); handleAddUser(); }}
+                <form autoComplete="off" onSubmit={(e) => { e.preventDefault(); handleAddUser(); }}
                     style={{
                         display: "flex",
                         flexDirection: "column",
@@ -60,17 +60,20 @@ function RegisterPage() {
                     <label style={{ display: "flex", flexDirection: "column" }}>
                         Name
                         <input className="register-input"
+                            autoComplete="new-name"
                             placeholder="Enter a username"
                             style={{ height: "30px", padding: "5px", paddingLeft: "10px" }}
                             type="text"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             required
+
                         />
                     </label>
                     <label style={{ display: "flex", flexDirection: "column" }}>
                         Email
                         <input
+                            autoComplete="new-email"
                             className="register-input"
                             placeholder="Enter your email"
                             style={{ height: "30px", padding: "5px", paddingLeft: "10px" }}
@@ -78,11 +81,13 @@ function RegisterPage() {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
+
                         />
                     </label>
                     <label style={{ display: "flex", flexDirection: "column" }}>
                         Password
                         <input
+                            autoComplete="new-password"
                             placeholder="Enter strong password"
                             style={{ height: "30px", padding: "5px", paddingLeft: "10px" }}
                             type="password"

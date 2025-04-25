@@ -6,21 +6,21 @@ function Footer() {
             <div style={{ display: "flex", justifyContent: "space-between", paddingTop: "20px" }}>
                 <div className="footer-links" style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", flexDirection: "column", paddingLeft: "20px" }} >
                     <p style={{ marginBottom: "20px" }}><strong>SOCIALS</strong></p>
-                    <p><a target="_blank" href="https://www.instagram.com/_man.av/">insta</a></p>
-                    <p><a target="_blank" href="https://www.linkedin.com/in/manav-gusain/">linkedin</a></p>
-                    <p><a target="_blank" href="https://x.com/Manav437">twitter</a></p>
-                    <p><a target="_blank" href="https://in.pinterest.com/xhutpaglu437/">pinterest</a></p>
+                    <p><a target="_blank" href="https://www.instagram.com/_man.av/">Insta</a></p>
+                    <p><a target="_blank" href="https://www.linkedin.com/in/manav-gusain/">Linked In</a></p>
+                    <p><a target="_blank" href="https://x.com/Manav437">X</a></p>
+                    <p><a target="_blank" href="https://in.pinterest.com/elite_like_that/">Pinterest</a></p>
                 </div>
 
                 <div className="footer-links" style={{ display: "flex", flexDirection: "column" }}>
                     <p style={{ marginBottom: "20px" }}><strong>ABOUT</strong></p>
-                    <p><a href="">our story</a></p>
+                    <p><a href="">Our story</a></p>
                     <p><a href="">Terms & Conditions</a></p>
-                    <p><a href="">privacy policy</a></p>
-                    <p><a href="">cookie policy</a></p>
+                    <p><a href="">Privacy Policy</a></p>
+                    <p><a href="">Cookie Policy</a></p>
                 </div>
 
-                <div className="footer-links" style={{ paddingRight: "20px" }}>
+                <div className="footer-links" style={{ display: "flex", alignItems: "center", flexDirection: "column", paddingRight: "20px" }}>
                     <p style={{ marginBottom: "20px" }}><strong>HELP</strong></p>
                     <p><a href="">FAQs</a></p>
                     <p><a href="">Contact</a></p>

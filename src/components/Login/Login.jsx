@@ -25,8 +25,8 @@ function LoginPage() {
     }
 
     return (
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "90vh" }}>
-            <Link to="/"><img src="/mogul-moves-2.svg" style={{ position: "absolute", left: "20px", top: "20px", height: "100px" }} alt="" /></Link>
+        <div className="login-container">
+            <Link to="/"><img src="/mogul-moves-2.svg" alt="" /></Link>
             <div className="login-div" style={{ borderRadius: "20px", padding: "20px", border: "3px solid #2C2C2C", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "50%", gap: "20px" }}>
                 <h1 style={{ margin: "0" }}>LOGIN</h1>
                 <form onSubmit={handleLogin} style={{ display: "flex", flexDirection: "column", gap: "15px", minWidth: "300px" }}>

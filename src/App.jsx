@@ -6,6 +6,8 @@ import HomeNotLoggedIn from "./components/Home/HomeNotLoggedIn";
 import ProfilePage from "./components/Profile/Profile";
 import LoginPage from "./components/Login/Login";
 import ChatsPage from "./components/Chats/Chat";
+import AboutPage from "./components/About/About";
+import NotFoundPage from "./components/NotFoundPage/NotFound";
 import { auth } from "./firebase"; // Adjust the import path as necessary
 import { onAuthStateChanged } from "firebase/auth";
 import "./App.css"
@@ -19,14 +21,17 @@ function App() {
 			setIsLoggedIn(!!user); // Convert user object to boolean (IMPPPPP)
 			setTimeout(() => {
 				setLoading(false);
-			}, 1200);
+			}, 500);
 		});
 
 		return () => unsubscribe();
 	}, []);
 
 	if (loading) return (
-		<div style={{ marginTop: "35vh" }} className="app-loader"></div>
+		<div style={{ height: "90vh", width: "100vw", margin: "40% auto" }}>
+			<span class="loader"></span>
+		</div>
+
 	)
 	return (
 		<Router>
@@ -36,8 +41,8 @@ function App() {
 				<Route path="/login" element={!isLoggedIn ? <LoginPage /> : <Navigate to="/" />} />
 				<Route path="/profile" element={isLoggedIn ? <ProfilePage /> : <Navigate to="/login" />} />
 				<Route path="/chats" element={isLoggedIn ? <ChatsPage /> : <Navigate to="/login" />} />
-				{/* <Route path="/about" element={<About />} /> */}
-
+				<Route path="/about" element={<AboutPage />} />
+				<Route path="/*" element={<NotFoundPage />} />
 			</Routes>
 		</Router>
 	)

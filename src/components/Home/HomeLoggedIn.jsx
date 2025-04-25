@@ -1,32 +1,38 @@
 import "./Home.css"
 import Feed from "../Feed/Feed"
 import { database } from '../../firebase';
-import { ref, onValue } from "firebase/database";
+import { ref, update, onValue, remove } from "firebase/database";
 import { getAuth, signOut } from "firebase/auth";
 import { useNavigate, Link } from "react-router-dom";
-import UserList from "../UserList"
 import { useLocation } from "react-router-dom";
-// import ShimmerUI from "../Shimmer/Shimmer";
 import { useEffect, useState } from "react";
 import NewPostModal from "../NewPost/NewPostModal";
+
+// import UserList from "../UserList"
+// import ShimmerUI from "../Shimmer/Shimmer";
 
 function HomeLoggedIn() {
     const [users, setUsers] = useState([]);
     const [posts, setPosts] = useState([]);
     const [showAlert, setShowAlert] = useState(false);
     const auth = getAuth();
-    const [loading, setLoading] = useState(false);
+    // const [loading, setLoading] = useState(false);
     const [showPostModal, setShowPostModal] = useState(false);
     const location = useLocation();
     const currentPath = location.pathname;
     const navigate = useNavigate();
+
+
+    const [usersLoaded, setUsersLoaded] = useState(false);
+    const [postsLoaded, setPostsLoaded] = useState(false);
 
     useEffect(() => {
         const usersRef = ref(database, 'users');
         onValue(usersRef, (snapshot) => {
             const data = snapshot.val();
             const userList = Object.entries(data || {}).map(([uid, info]) => ({ uid, ...info }));
-            setUsers(userList); // ✅ This includes current user too
+            setUsers(userList);
+            setUsersLoaded(true);
         });
     }, []);
 
@@ -43,6 +49,8 @@ function HomeLoggedIn() {
                 postList.sort((a, b) => b.createdAt - a.createdAt);
                 setPosts(postList);
             }
+
+            setPostsLoaded(true);
         });
     }, []);
 
@@ -79,9 +87,45 @@ function HomeLoggedIn() {
         setTimeout(() => setShowAlert(false), 2000); // Hide after 3s
     };
 
-    if (loading) {
-        return (<div style={{ marginTop: "35vh" }} className="home-loader"></div>)
-    }
+    const handleAddLike = (postId, likes = {}) => {
+        const userId = auth.currentUser.uid;
+        const postLikesRef = ref(database, `posts/${postId}/likes/${userId}`);
+        const isLiked = likes[userId];
+
+        if (isLiked) {
+            // Remove like
+            remove(postLikesRef);
+        } else {
+            // Add like
+            update(ref(database, `posts/${postId}/likes`), {
+                [userId]: true
+            });
+        }
+
+        // Update local state instantly
+        setPosts(prevPosts =>
+            prevPosts.map(post =>
+                post.postId === postId
+                    ? {
+                        ...post,
+                        likes: isLiked
+                            ? Object.entries(post.likes || {}).filter(([key]) => key !== userId)
+                            : { ...post.likes, [userId]: true }
+                    }
+                    : post
+            )
+        );
+    };
+
+    useEffect(() => {
+        if (usersLoaded && postsLoaded) {
+            setTimeout(() => {
+                setLoading(false);
+            }, 500); // your shimmer duration
+        }
+    }, [usersLoaded, postsLoaded]);
+
+
     return (
         <div className="home-container">
             <div className="navbar">
@@ -121,6 +165,14 @@ function HomeLoggedIn() {
                                     <div className="post-user-info">
                                         <p className="post-username">{postUser?.name || post.userId}</p>
                                         <p className="post-time">{new Date(post.createdAt).toLocaleString()}</p>
+                                    </div>
+
+                                    <div style={{ margin: " auto", display: "flex" }}>
+                                        <button onClick={() => handleAddLike(post.postId, post.likes)} style={{ display: "flex", alignItems: "center", margin: "0 10px" }}>
+                                            <img src="/like-img.png" alt="" />
+                                            {post.likes && post.likes[auth.currentUser.uid] ? "Unlike" : "Like"}
+                                            ({post.likes ? Object.values(post.likes).filter(v => v === true).length : 0})
+                                        </button>
                                     </div>
                                 </div>
                                 <div className="post-body">

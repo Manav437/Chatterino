@@ -69,3 +69,9 @@ p > a {
 p > a:hover {
   color:rgb(210, 205, 205);
 }
+
+@media screen and (max-width: 425px) {
+  .footer-links a {
+    font-size: 14px;
+  }
+}
