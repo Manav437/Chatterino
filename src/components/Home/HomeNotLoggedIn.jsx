@@ -50,7 +50,7 @@ function HomeNotLoggedIn() {
                             <h3 style={{ marginTop: "0", textDecoration: "underline", textUnderlineOffset: "4px" }}>POSTS</h3>
                             <img src="/feed-posts-img.png" alt="" />
                         </div>
-                        <p>Post your daily thoughts, share your moments, and connect with friends.</p>
+                        <p>Share your thoughts, capture your moments, and stay connected with friends — every day.</p>
                     </div>
                 </div>
 
