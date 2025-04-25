@@ -118,7 +118,7 @@ const ProfilePage = () => {
             </div >
 
             <div className="profile" style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
-                <h1 style={{ marginTop: "20px", color: "white" }}>Profile Page</h1>
+                <h1 style={{ marginTop: "10px", color: "white" }}>Profile Page</h1>
                 {user ?
                     <div style={{
                         display: "flex",
@@ -132,7 +132,7 @@ const ProfilePage = () => {
                             flex: 1,
                             minWidth: "300px",
                             maxWidth: "400px",
-                            backgroundColor: "#BDDDE4",
+                            backgroundColor: "black",
                             padding: "30px",
                             borderRadius: "20px",
                             boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
@@ -142,23 +142,25 @@ const ProfilePage = () => {
                                 src={displayPhoto || "/noimg-icon.png"}
                                 alt="Profile"
                                 style={{
-                                    height: "100px",
-                                    width: "100px",
-                                    borderRadius: "50%",
+                                    height: "125px",
+                                    width: "125px",
+                                    borderRadius: "25px",
                                     objectFit: "cover",
-                                    border: "3px solid rgb(69, 70, 69)",
-                                    padding: "3px",
-                                    background: "white",
-                                    marginBottom: "20px"
+                                    border: "2px solid white",
+                                    padding: "4px",
+                                    background: "black",
+                                    marginBottom: "10px"
                                 }}
                             />
-                            <p style={{ fontWeight: "bold", fontSize: "16px", color: "#333" }}>📧 {user.email}</p>
-                            <p><strong>🧑 Name:</strong> {displayName}</p>
-                            <p><strong>💬 Bio:</strong> {displayBio || "No bio yet."}</p>
+                            <p style={{ color: "#F5EEDD", fontWeight: "bold", fontSize: "16px" }}>📧 {user.email}</p>
+                            <p style={{ color: "#fff" }}>🧑 <strong style={{ textDecoration: "underline", textUnderlineOffset: "2px" }}>Name</strong>: {displayName}</p>
+                            <p style={{ color: "#fff" }}>💬 <strong style={{ textDecoration: "underline", textUnderlineOffset: "2px" }}>Bio</strong>: {displayBio || "No bio yet."}</p>
+
+                            <hr style={{ border: "none", height: "2px", background: "white", borderRadius: "5px" }} />
 
                             {displaySpeaks.length > 0 && (
                                 <div style={{ marginTop: "15px" }}>
-                                    <strong>🗣️ Speaks:</strong>
+                                    <strong style={{ color: "#fff" }}>🗣️ Speaks:</strong>
                                     <div style={{ display: "flex", flexWrap: "wrap", gap: "5px", marginTop: "5px" }}>
                                         {displaySpeaks.map(lang => (
                                             <span key={lang} style={{
@@ -166,7 +168,7 @@ const ProfilePage = () => {
                                                 borderRadius: "15px",
                                                 backgroundColor: "#d1e7dd",
                                                 fontSize: "13px",
-                                                color: "#0f5132"
+                                                color: "black"
                                             }}>{lang}</span>
                                         ))}
                                     </div>
@@ -175,7 +177,7 @@ const ProfilePage = () => {
 
                             {displayLearning.length > 0 && (
                                 <div style={{ marginTop: "15px" }}>
-                                    <strong>📚 Learning:</strong>
+                                    <strong style={{ color: "#fff" }}>📚 Learning:</strong>
                                     <div style={{ display: "flex", flexWrap: "wrap", gap: "5px", marginTop: "5px" }}>
                                         {displayLearning.map(lang => (
                                             <span key={lang} style={{
@@ -191,7 +193,7 @@ const ProfilePage = () => {
                             )}
                         </div>
 
-                        <div style={{
+                        <div className="update-profile" style={{
                             flex: 1,
                             minWidth: "300px",
                             maxWidth: "400px",
@@ -199,44 +201,46 @@ const ProfilePage = () => {
                             borderRadius: "15px",
                             border: "1px solid #ccc",
                             boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-                            backgroundColor: "#BDDDE4",
+                            backgroundColor: "black",
                             // textAlign: "center"
                         }}>
-                            <h2 style={{ marginBottom: "20px", color: "#333", textAlign: "center" }}>⛭ Update Your Details</h2>
+                            <h2 style={{ margin: "0", marginBottom: "20px", color: "white", textAlign: "center" }}>⛭ Update Your Details</h2>
 
                             <input
                                 type="text"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
                                 placeholder="New Name"
-                                style={{ background: "#222222", padding: "10px", marginBottom: "10px", width: "90%", borderRadius: "8px", border: "1px solid #ccc" }}
+                                style={{ background: "#222222", padding: "10px", marginBottom: "10px", width: "90%", borderRadius: "8px" }}
                             />
                             <input
                                 type="text"
                                 value={photo}
                                 onChange={(e) => setPhoto(e.target.value)}
                                 placeholder="New Photo URL"
-                                style={{ background: "#222222", padding: "10px", marginBottom: "10px", width: "90%", borderRadius: "8px", border: "1px solid #ccc" }}
+                                style={{ background: "#222222", padding: "10px", marginBottom: "10px", width: "90%", borderRadius: "8px" }}
                             />
                             <textarea
                                 value={bio}
                                 onChange={(e) => setBio(e.target.value)}
                                 placeholder="New Bio"
                                 rows="3"
-                                style={{ background: "#222222", padding: "10px", marginBottom: "10px", width: "90%", borderRadius: "8px", border: "1px solid #ccc", resize: "none" }}
+                                style={{ background: "#222222", padding: "10px", marginBottom: "0px", width: "90%", borderRadius: "8px", resize: "none" }}
                             ></textarea>
 
-                            <label style={{ fontWeight: "bold" }}>Languages You Speak:</label>
-                            <select multiple value={speaks} onChange={handleMultiSelect(setSpeaks)} style={{ background: "#222222", padding: "8px", marginBottom: "10px", width: "100%", borderRadius: "8px", border: "1px solid #ccc" }}>
+                            <hr style={{ width: "98%", height: "2px", background: "white", border: "none", borderRadius: "5px" }} />
+
+                            <label style={{ color: "white", fontWeight: "bold" }}>Languages You Speak:</label>
+                            <select multiple value={speaks} onChange={handleMultiSelect(setSpeaks)} style={{ height: "100px", background: "#222222", padding: "8px", marginBottom: "10px", width: "95%", borderRadius: "8px", border: "1px solid #ccc" }}>
                                 {languagesList.map(lang => (
-                                    <option key={lang} value={lang}>{lang}</option>
+                                    <option style={{ border: ".1px solid white", cursor: "pointer", textAlign: "center", borderRadius: "7px", background: "#2C2C2C", color: "white", margin: "5px auto" }} key={lang} value={lang}>{lang}</option>
                                 ))}
                             </select>
 
-                            <label style={{ fontWeight: "bold" }}>Languages You're Learning:</label>
-                            <select multiple value={learning} onChange={handleMultiSelect(setLearning)} style={{ background: "#222222", padding: "8px", marginBottom: "15px", width: "100%", borderRadius: "8px", border: "1px solid #ccc" }}>
+                            <label style={{ color: "white", fontWeight: "bold" }}>Languages You're Learning:</label>
+                            <select multiple value={learning} onChange={handleMultiSelect(setLearning)} style={{ height: "100px", background: "#222222", padding: "8px", marginBottom: "15px", width: "95%", borderRadius: "8px", border: "1px solid #ccc" }}>
                                 {languagesList.map(lang => (
-                                    <option key={lang} value={lang}>{lang}</option>
+                                    <option style={{ border: ".1px solid white", cursor: "pointer", textAlign: "center", borderRadius: "7px", background: "#2C2C2C", color: "white", margin: "5px auto" }} key={lang} value={lang}>{lang}</option>
                                 ))}
                             </select>
 

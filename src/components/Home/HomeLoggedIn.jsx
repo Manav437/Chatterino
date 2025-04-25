@@ -109,7 +109,7 @@ function HomeLoggedIn() {
                     ? {
                         ...post,
                         likes: isLiked
-                            ? Object.entries(post.likes || {}).filter(([key]) => key !== userId)
+                            ? Object.fromEntries(Object.entries(post.likes || {}).filter(([key]) => key !== userId))
                             : { ...post.likes, [userId]: true }
                     }
                     : post
@@ -174,11 +174,12 @@ function HomeLoggedIn() {
                                     </div>
 
                                     <div style={{
-                                        margin: "auto", display: "flex", justifyContent: "center", alignItems: "center", padding: "10px 0"
+                                        margin: "auto 0 auto 50%", display: "flex", justifyContent: "center", alignItems: "center", padding: "10px 0"
                                     }}>
                                         <button onClick={() => handleAddLike(post.postId, post.likes)} style={{
                                             fontSize: "17px",
                                             display: "flex",
+                                            flexDirection: "row",
                                             alignItems: "center",
                                             padding: "5px 10px",
                                             cursor: "pointer",
@@ -189,8 +190,9 @@ function HomeLoggedIn() {
                                         }}>
                                             {/* <img src="/like-img.png" alt="" /> */}
                                             {post.likes && post.likes[auth.currentUser.uid] ? "👎🏻 Dislike" : "👍🏻 Like"}
-                                            ({post.likes ? Object.values(post.likes).filter(v => v === true).length : 0})
                                         </button>
+
+                                        <p style={{ marginLeft: "10px", width: "25px", borderRadius: "50%", background: "#2C2C2C" }}>{post.likes ? Object.values(post.likes).filter(v => v === true).length : 0}</p>
                                     </div>
                                 </div>
                                 <div className="post-body">

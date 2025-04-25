@@ -31,3 +31,17 @@
     /* font-weight: bold; */
     /* color: rgb(13, 242, 162); */
 /* } */
+
+
+select::-webkit-scrollbar {
+    display: none;
+}
+
+.update-profile input, .update-profile textarea {
+    border: 1px solid white;
+}
+
+.update-profile input:focus, .update-profile textarea:focus {
+    outline:none;
+    border: 1px solid green;
+}

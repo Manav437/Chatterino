@@ -76,10 +76,14 @@ function ChatsPage() {
     };
 
     const handleKeyboardKeyPress = (button) => {
-        if (button === "{space}") {
-            setMessage(prev => prev + " ");
+        if (button === "{bksp}") {
+            setMessage((prev) => prev.slice(0, -1));
+        } else if (button === "{space}") {
+            setMessage((prev) => prev + " ");
+        } else if (button === "{enter}") {
+            // Do something on enter
         } else {
-            setMessage(prev => prev + button);
+            setMessage((prev) => prev + button);
         }
     };
 
@@ -105,63 +109,70 @@ function ChatsPage() {
                     </div>
                 </div>
             </div>
-            <div style={{ width: "15%", padding: "10px", borderRight: "1px solid white" }}>
+            <div style={{ margin: "auto", width: "15%", height: "95vh", padding: "10px", borderRight: "1px dashed white" }}>
                 <h3>Available Language Chatrooms:</h3>
                 {users.length === 0 ? (
                     <p>No chatrooms yet. Update your profile!</p>
                 ) : (
                     users.map((lang, i) => (
-                        <div key={i} className="chat-user-div" onClick={() => setSelectedGroup(lang)} style={{ padding: "5px", border: "1px solid white", borderRadius: "10px", cursor: "pointer", margin: "5px 0" }}>
+                        <div key={i} className="chat-user-div" onClick={() => setSelectedGroup(lang)} style={{ background: selectedGroup === lang ? "white" : "black", color: selectedGroup === lang ? "black" : "white", padding: "5px", border: "1px solid white", borderRadius: "10px", cursor: "pointer", margin: "5px 0" }}>
                             #{lang}
                         </div>
                     ))
                 )}
             </div>
-            <div style={{ width: "80%", display: "flex", flexDirection: "column" }}>
+            <div style={{ gap: "5px", borderRadius: "7px", margin: "auto", height: "98vh", marginLeft: "10px", width: "80%", display: "flex", flexDirection: "column", }}>
                 {selectedGroup && (
-                    <div style={{ fontWeight: "bold", fontSize: "20px", padding: "10px 20px", borderBottom: "1px solid #ccc", backgroundColor: "black" }}>
-                        Chatting in: <strong>#{selectedGroup}</strong>
+                    <div style={{ borderRadius: "7px", fontWeight: "bold", fontSize: "20px", padding: "10px 20px", borderBottom: "2px solid #ccc", backgroundColor: "black" }}>
+                        Chatting in : <strong style={{ fontStyle: "italic", textDecoration: "underline", textUnderlineOffset: "2px" }}>#{selectedGroup}</strong>
                     </div>
                 )}
-                <div style={{ flex: 1, padding: "20px", display: "flex", flexDirection: "column", overflow: "hidden" }}>
-                    <div style={{ flex: 1, overflowY: "auto", border: "1px solid #ccc", padding: "10px", borderRadius: "4px", marginBottom: "10px" }}>
-                        {groupMessages.length === 0 ? (
-                            <p>No messages yet. Be the first to say something!</p>
-                        ) : (
-                            groupMessages.map((msg, index) => (
-                                <div key={index} style={{
-                                    color: "black",
-                                    marginBottom: "8px",
-                                    backgroundColor: msg.sender === auth.currentUser.displayName ? "#F7CFD8" : "#A6D6D6",
-                                    padding: "5px",
-                                    borderRadius: "5px"
-                                }}>
-                                    ({new Date(msg.timestamp).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}) <strong>{msg.sender}</strong>: {msg.text}
-                                </div>
-                            ))
-                        )}
-                        <div ref={messagesEndRef} />
-                    </div>
-                    <form onSubmit={sendGroupMessage} style={{ display: "flex", gap: "10px" }}>
-                        <input
-                            type="text"
-                            placeholder="Type your message..."
-                            value={message}
-                            onChange={(e) => setMessage(e.target.value)}
-                            style={{ flex: 1, padding: "10px", borderRadius: "4px", border: "1px solid #ccc" }}
-                        />
-                        <button type="submit" style={{ padding: "10px 20px", backgroundColor: "#4CAF50", color: "white", border: "none", borderRadius: "4px" }}>
-                            Send
-                        </button>
-                    </form>
-                    {selectedGroup && (
-                        <div>
-                            <Keyboard theme={"hg-theme-default dark-keyboard"} layout={keyboardLayouts[selectedGroup.toLowerCase()] || keyboardLayouts.english} onKeyPress={handleKeyboardKeyPress} />
-                        </div>)
-                    }
+                <div style={{ borderRadius: "7px", background: "black", flex: 1, padding: "20px", display: "flex", flexDirection: "column", overflow: "hidden" }}>
+                    {!selectedGroup ? (
+                        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100vh", width: "100%", background: "black", borderRadius: "20px", flex: 1 }}>
+                            <img src="/chat-arrow.png" alt="" />
+                            <h1>Please select a chatroom :)</h1>
+                        </div> // Just renders empty space
+                    ) : (
+                        <>
+                            <div style={{ background: "#2C2C2C", flex: 1, overflowY: "auto", border: "1px solid #ccc", padding: "10px", borderRadius: "4px", marginBottom: "10px" }}>
+                                {groupMessages.length === 0 ? (
+                                    <p>No messages yet. Be the first to say something!</p>
+                                ) : (
+                                    groupMessages.map((msg, index) => (
+                                        <div key={index} style={{
+                                            color: "black",
+                                            marginBottom: "8px",
+                                            backgroundColor: msg.sender === auth.currentUser.displayName ? "#F7CFD8" : "#A6D6D6",
+                                            padding: "5px",
+                                            borderRadius: "5px"
+                                        }}>
+                                            ({new Date(msg.timestamp).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}) <strong>{msg.sender}</strong>: {msg.text}
+                                        </div>
+                                    ))
+                                )}
+                                <div ref={messagesEndRef} />
+                            </div>
+                            <form onSubmit={sendGroupMessage} style={{ background: "black", display: "flex", gap: "10px" }}>
+                                <input
+                                    type="text"
+                                    placeholder="Type your message..."
+                                    value={message}
+                                    onChange={(e) => setMessage(e.target.value)}
+                                    style={{ flex: 1, padding: "10px", borderRadius: "4px", border: "1px solid #ccc" }}
+                                />
+                                <button type="submit" style={{ padding: "10px 20px", backgroundColor: "#4CAF50", color: "white", border: "none", borderRadius: "4px" }}>
+                                    Send
+                                </button>
+                            </form>
+                            <div>
+                                <Keyboard theme={"hg-theme-default dark-keyboard"} layout={keyboardLayouts[selectedGroup.toLowerCase()] || keyboardLayouts.english} onKeyPress={handleKeyboardKeyPress} />
+                            </div>
+                        </>
+                    )}
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 
