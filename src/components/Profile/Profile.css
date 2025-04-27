@@ -32,9 +32,29 @@
     /* color: rgb(13, 242, 162); */
 /* } */
 
+option {
+    cursor: pointer;
+    text-align: center;
+    border-radius: 7px;
+    background: #2C2C2C;
+    color: white;
+    margin: 5px auto;
+}
+
+option:focus {
+    background: black;
+    color: white;
+}
+
+option:checked {
+    outline:none;
+    background: white;
+    color: black;
+}
 
 select::-webkit-scrollbar {
     display: none;
+    scroll-behavior: smooth;
 }
 
 .update-profile input, .update-profile textarea {
@@ -43,5 +63,5 @@ select::-webkit-scrollbar {
 
 .update-profile input:focus, .update-profile textarea:focus {
     outline:none;
-    border: 1px solid green;
+    border: 1px solid #6A9C89;
 }

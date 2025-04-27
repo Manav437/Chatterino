@@ -8,7 +8,7 @@ import LoginPage from "./components/Login/Login";
 import ChatsPage from "./components/Chats/Chat";
 import AboutPage from "./components/About/About";
 import NotFoundPage from "./components/NotFoundPage/NotFound";
-import { auth } from "./firebase"; // Adjust the import path as necessary
+import { auth } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import "./App.css"
 
@@ -18,10 +18,11 @@ function App() {
 
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (user) => {
+			// console.log(user)
 			setIsLoggedIn(!!user); // Convert user object to boolean (IMPPPPP)
 			setTimeout(() => {
 				setLoading(false);
-			}, 1500);
+			}, 500);
 		});
 
 		return () => unsubscribe();

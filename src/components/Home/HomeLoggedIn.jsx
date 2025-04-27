@@ -16,15 +16,11 @@ function HomeLoggedIn() {
     const [posts, setPosts] = useState([]);
     const [showAlert, setShowAlert] = useState(false);
     const auth = getAuth();
-    const [loading, setLoading] = useState(false);
     const [showPostModal, setShowPostModal] = useState(false);
     const location = useLocation();
     const currentPath = location.pathname;
     const navigate = useNavigate();
 
-
-    const [usersLoaded, setUsersLoaded] = useState(false);
-    const [postsLoaded, setPostsLoaded] = useState(false);
 
     useEffect(() => {
         const usersRef = ref(database, 'users');
@@ -32,7 +28,6 @@ function HomeLoggedIn() {
             const data = snapshot.val();
             const userList = Object.entries(data || {}).map(([uid, info]) => ({ uid, ...info }));
             setUsers(userList);
-            setUsersLoaded(true);
         });
     }, []);
 
@@ -49,22 +44,10 @@ function HomeLoggedIn() {
                 postList.sort((a, b) => b.createdAt - a.createdAt);
                 setPosts(postList);
             }
-
-            setPostsLoaded(true);
         });
     }, []);
 
 
-    useEffect(() => {
-        const hasVisitedHome = localStorage.getItem("hasVisitedHome");
-        if (!hasVisitedHome && currentPath === "/") {
-            setLoading(true);
-            setTimeout(() => {
-                setLoading(false);
-                localStorage.setItem("hasVisitedHome", "true");
-            }, 500); // your shimmer duration
-        }
-    }, [])
 
     const handleNewPost = () => {
         setShowPostModal(true);
@@ -117,13 +100,13 @@ function HomeLoggedIn() {
         );
     };
 
-    useEffect(() => {
-        if (usersLoaded && postsLoaded) {
-            setTimeout(() => {
-                setLoading(false);
-            }, 500); // your shimmer duration
-        }
-    }, [usersLoaded, postsLoaded]);
+    // useEffect(() => {
+    //     if (usersLoaded && postsLoaded) {
+    //         setTimeout(() => {
+    //             setLoading(false);
+    //         }, 500); // your shimmer duration
+    //     }
+    // }, [usersLoaded, postsLoaded]);
 
 
     return (
@@ -141,7 +124,7 @@ function HomeLoggedIn() {
                     </div>
                     <div className="nav-item">
                         <img style={{ height: "25px" }} src="/chat-icon.png" alt="" />
-                        <Link style={{ fontWeight: "bold", minWidth: "70%", fontSize: "1.2rem" }} to="/chats" className={`${currentPath === "chats" ? "active" : ""} nav-links`}>Chat</Link>
+                        <Link style={{ fontWeight: "bold", minWidth: "70%", fontSize: "1.2rem" }} to="/chats" className={`${currentPath === "/chats" ? "active" : ""} nav-links`}>Chat</Link>
                     </div>
                     <div className="nav-item">
                         <img style={{ height: "25px" }} src="/user-icon.png" alt="" />

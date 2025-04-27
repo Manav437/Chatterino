@@ -102,7 +102,7 @@ const ProfilePage = () => {
                     <p style={{ marginTop: "10px", marginBottom: "0" }}>Chatterino</p>
                 </div>
                 <div className="nav-items" style={{ width: "100%" }}>
-                    <div className="nav-item"  >
+                    <div className="nav-item">
                         <img style={{ height: "25px" }} src="/home-icon.png" alt="" />
                         <Link style={{ fontWeight: "bold", minWidth: "70%", fontSize: "1.2rem" }} className={`${currentPath === "/" ? "active" : ""} nav-links`} to="/">Home</Link >
                     </div>
@@ -118,15 +118,16 @@ const ProfilePage = () => {
             </div >
 
             <div className="profile" style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
-                <h1 style={{ marginTop: "10px", color: "white" }}>Profile Page</h1>
+                <h1 style={{ width: "30%", textAlign: "center", border: "1px solid white", borderRadius: "15px", padding: "5px 7px", background: "black", marginTop: "10px", color: "white" }}>Profile Page</h1>
                 {user ?
                     <div style={{
                         display: "flex",
                         flexDirection: "row",
                         gap: "40px",
                         flexWrap: "wrap",
-                        marginTop: "20px",
-                        justifyContent: "center"
+                        paddingTop: "30px",
+                        justifyContent: "center",
+                        borderTop: "2px solid white"
                     }}>
                         <div style={{
                             flex: 1,
@@ -134,8 +135,9 @@ const ProfilePage = () => {
                             maxWidth: "400px",
                             backgroundColor: "black",
                             padding: "30px",
-                            borderRadius: "20px",
-                            boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                            border: "1px solid white",
+                            borderRadius: "15px",
+                            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
                             textAlign: "center"
                         }}>
                             <img
@@ -147,8 +149,8 @@ const ProfilePage = () => {
                                     borderRadius: "25px",
                                     objectFit: "cover",
                                     border: "2px solid white",
-                                    padding: "4px",
-                                    background: "black",
+                                    padding: "2px",
+                                    background: "lightgreen",
                                     marginBottom: "10px"
                                 }}
                             />
@@ -161,11 +163,13 @@ const ProfilePage = () => {
                             {displaySpeaks.length > 0 && (
                                 <div style={{ marginTop: "15px" }}>
                                     <strong style={{ color: "#fff" }}>🗣️ Speaks:</strong>
-                                    <div style={{ display: "flex", flexWrap: "wrap", gap: "5px", marginTop: "5px" }}>
+                                    <div style={{ borderRadius: "20px", background: "white", padding: "10px", display: "flex", flexWrap: "wrap", gap: "5px", marginTop: "5px" }}>
                                         {displaySpeaks.map(lang => (
                                             <span key={lang} style={{
+                                                cursor: "alias",
                                                 padding: "5px 10px",
                                                 borderRadius: "15px",
+                                                border: "1px solid black",
                                                 backgroundColor: "#d1e7dd",
                                                 fontSize: "13px",
                                                 color: "black"
@@ -178,11 +182,13 @@ const ProfilePage = () => {
                             {displayLearning.length > 0 && (
                                 <div style={{ marginTop: "15px" }}>
                                     <strong style={{ color: "#fff" }}>📚 Learning:</strong>
-                                    <div style={{ display: "flex", flexWrap: "wrap", gap: "5px", marginTop: "5px" }}>
+                                    <div style={{ borderRadius: "20px", background: "white", padding: "10px", display: "flex", flexWrap: "wrap", gap: "5px", marginTop: "5px" }}>
                                         {displayLearning.map(lang => (
                                             <span key={lang} style={{
+                                                cursor: "alias",
                                                 padding: "5px 10px",
                                                 borderRadius: "15px",
+                                                border: "1px solid black",
                                                 backgroundColor: "#cff4fc",
                                                 fontSize: "13px",
                                                 color: "#055160"
@@ -199,12 +205,12 @@ const ProfilePage = () => {
                             maxWidth: "400px",
                             padding: "20px",
                             borderRadius: "15px",
-                            border: "1px solid #ccc",
+                            border: "1px solid white",
                             boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
                             backgroundColor: "black",
                             // textAlign: "center"
                         }}>
-                            <h2 style={{ margin: "0", marginBottom: "20px", color: "white", textAlign: "center" }}>⛭ Update Your Details</h2>
+                            <h2 style={{ margin: "0", marginBottom: "20px", color: "white", textAlign: "center" }}>⛭ <span style={{ textDecoration: "underline", textUnderlineOffset: "5px" }}>Update Your Details</span> </h2>
 
                             <input
                                 type="text"
@@ -231,16 +237,16 @@ const ProfilePage = () => {
                             <hr style={{ width: "98%", height: "2px", background: "white", border: "none", borderRadius: "5px" }} />
 
                             <label style={{ color: "white", fontWeight: "bold" }}>Languages You Speak:</label>
-                            <select multiple value={speaks} onChange={handleMultiSelect(setSpeaks)} style={{ height: "100px", background: "#222222", padding: "8px", marginBottom: "10px", width: "95%", borderRadius: "8px", border: "1px solid #ccc" }}>
+                            <select multiple size={7} value={speaks} onChange={handleMultiSelect(setSpeaks)} style={{ maxHeight: "110px", background: "#222222", padding: "2px 8px", marginBottom: "10px", width: "95%", borderRadius: "8px", border: ".5px solid #ccc" }}>
                                 {languagesList.map(lang => (
-                                    <option style={{ border: ".1px solid white", cursor: "pointer", textAlign: "center", borderRadius: "7px", background: "#2C2C2C", color: "white", margin: "5px auto" }} key={lang} value={lang}>{lang}</option>
+                                    <option key={lang} value={lang}>{lang}</option>
                                 ))}
                             </select>
 
                             <label style={{ color: "white", fontWeight: "bold" }}>Languages You're Learning:</label>
-                            <select multiple value={learning} onChange={handleMultiSelect(setLearning)} style={{ height: "100px", background: "#222222", padding: "8px", marginBottom: "15px", width: "95%", borderRadius: "8px", border: "1px solid #ccc" }}>
+                            <select multiple size={7} value={learning} onChange={handleMultiSelect(setLearning)} style={{ maxHeight: "110px", background: "#222222", padding: "2px 8px", marginBottom: "15px", width: "95%", borderRadius: "8px", border: ".5px solid #ccc" }}>
                                 {languagesList.map(lang => (
-                                    <option style={{ border: ".1px solid white", cursor: "pointer", textAlign: "center", borderRadius: "7px", background: "#2C2C2C", color: "white", margin: "5px auto" }} key={lang} value={lang}>{lang}</option>
+                                    <option key={lang} value={lang}>{lang}</option>
                                 ))}
                             </select>
 

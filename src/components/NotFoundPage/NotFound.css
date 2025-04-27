@@ -1,0 +1,7 @@
+.go-back {
+    color: rgb(100, 99, 99);
+}
+
+.go-back:hover {
+    color:rgb(255, 255, 255);
+}

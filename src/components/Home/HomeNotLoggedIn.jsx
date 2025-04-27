@@ -39,7 +39,7 @@ function HomeNotLoggedIn() {
 
             </div>
 
-            <img style={{ marginTop: "20px", width: "98%", borderRadius: "20px" }}
+            <img className="not-login-img"
                 src="https://framerusercontent.com/images/CDNP3QX8DV14r9QNpxxQYRDunY.png?scale-down-to=4096" alt="" />
 
             <div className="features">

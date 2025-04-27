@@ -40,6 +40,8 @@
 }
 
 .nav-item {
+    padding:5px;
+    background-color: black;
     margin: 10px auto;
     display: flex;
     justify-content: center;
@@ -47,12 +49,13 @@
     margin-bottom: 10px;
     width: 70%;
     height: 40px;
-    border-radius: 10px;
+    border-radius: 20px;
 }
 
 .nav-item:hover {
     background: rgba(120, 120, 120, 0.664);
     cursor: pointer;
+    border: .2px solid white;
 }
 
 
@@ -204,7 +207,7 @@
 
 .get-started > h3 {
   color: #FDFAF6;
-  font-size: 1.3rem;
+  font-size: 2rem;
 }
 
 .get-started button {
@@ -221,7 +224,7 @@
     font-weight: 800;
     font-style: normal;
     width: 47%;
-    height: 100px;
+    height: 125px;
     border: none;
     outline: none;
     color: #fff;
@@ -230,7 +233,7 @@
     position: relative;
     z-index: 0;
     border-radius: 10px;
-    font-size: 2rem;
+    font-size: 3.5rem;
 }
 
 .glow-on-hover:before {
@@ -274,13 +277,18 @@
     border-radius: 10px;
 }
 
+
 @keyframes glowing {
     0% { background-position: 0 0; }
     50% { background-position: 400% 0; }
     100% { background-position: 0 0; }
 }
 
-.home-not-logged-in > img {
+.not-login-img {
+    margin-top:20px;
+    margin-bottom: 15px;
+    width: 95%;
+    border-radius: 20px;
   height: 70vh;
 }
 

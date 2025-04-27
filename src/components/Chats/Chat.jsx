@@ -19,6 +19,7 @@ function ChatsPage() {
     const location = useLocation();
     const currentPath = location.pathname;
     const messagesEndRef = useRef(null);
+    const inputRef = useRef(null);
 
     useEffect(() => {
         const currentUserRef = ref(database, `users/${auth.currentUser?.uid}`);
@@ -85,6 +86,8 @@ function ChatsPage() {
         } else {
             setMessage((prev) => prev + button);
         }
+
+        setTimeout(() => inputRef.current?.focus(), 0);
     };
 
     return (
@@ -109,19 +112,25 @@ function ChatsPage() {
                     </div>
                 </div>
             </div>
-            <div style={{ margin: "auto", width: "15%", height: "95vh", padding: "10px", borderRight: "1px dashed white" }}>
-                <h3>Available Language Chatrooms:</h3>
+
+            <div style={{ borderRadius: "10px 0 0 10px ", display: "flex", flexDirection: "column", margin: "auto", width: "15%", height: "95vh", padding: "10px", borderRight: "1px solid white" }}>
+                <h3 style={{ padding: "5px", margin: "0", marginBottom: "5px", borderRadius: "10px", background: "black" }}>Available Language Chatrooms:</h3>
+                <hr style={{ width: "100%", background: "white", }} />
                 {users.length === 0 ? (
                     <p>No chatrooms yet. Update your profile!</p>
                 ) : (
                     users.map((lang, i) => (
-                        <div key={i} className="chat-user-div" onClick={() => setSelectedGroup(lang)} style={{ background: selectedGroup === lang ? "white" : "black", color: selectedGroup === lang ? "black" : "white", padding: "5px", border: "1px solid white", borderRadius: "10px", cursor: "pointer", margin: "5px 0" }}>
+                        <div key={i} className="chat-user-div" onClick={() => setSelectedGroup(lang)} style={{ border: selectedGroup === lang ? "2px solid #FFFECE" : "1px solid white", background: selectedGroup === lang ? "#8AB2A6" : "black", color: selectedGroup === lang ? "#18230F" : "white", padding: "5px", borderRadius: "10px", cursor: "pointer", margin: "5px 0" }}>
                             #{lang}
                         </div>
                     ))
                 )}
+                <div className="chat-doodle" style={{ height: "100%", width: "100%" }}>
+
+                </div>
             </div>
-            <div style={{ gap: "5px", borderRadius: "7px", margin: "auto", height: "98vh", marginLeft: "10px", width: "80%", display: "flex", flexDirection: "column", }}>
+
+            <div style={{ gap: "5px", borderRadius: "7px", margin: "auto", height: "98vh", marginLeft: "10px", width: "60%", display: "flex", flexDirection: "column", }}>
                 {selectedGroup && (
                     <div style={{ borderRadius: "7px", fontWeight: "bold", fontSize: "20px", padding: "10px 20px", borderBottom: "2px solid #ccc", backgroundColor: "black" }}>
                         Chatting in : <strong style={{ fontStyle: "italic", textDecoration: "underline", textUnderlineOffset: "2px" }}>#{selectedGroup}</strong>
@@ -130,7 +139,7 @@ function ChatsPage() {
                 <div style={{ borderRadius: "7px", background: "black", flex: 1, padding: "20px", display: "flex", flexDirection: "column", overflow: "hidden" }}>
                     {!selectedGroup ? (
                         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100vh", width: "100%", background: "black", borderRadius: "20px", flex: 1 }}>
-                            <img src="/chat-arrow.png" alt="" />
+                            <img style={{ height: "50px" }} src="/chat-arrow.png" alt="" />
                             <h1>Please select a chatroom :)</h1>
                         </div> // Just renders empty space
                     ) : (
@@ -155,11 +164,12 @@ function ChatsPage() {
                             </div>
                             <form onSubmit={sendGroupMessage} style={{ background: "black", display: "flex", gap: "10px" }}>
                                 <input
+                                    ref={inputRef}
                                     type="text"
                                     placeholder="Type your message..."
                                     value={message}
                                     onChange={(e) => setMessage(e.target.value)}
-                                    style={{ flex: 1, padding: "10px", borderRadius: "4px", border: "1px solid #ccc" }}
+                                    style={{ background: "#2c2c2c", color: "white", flex: 1, padding: "10px", borderRadius: "4px", border: "1px solid #ccc" }}
                                 />
                                 <button type="submit" style={{ padding: "10px 20px", backgroundColor: "#4CAF50", color: "white", border: "none", borderRadius: "4px" }}>
                                     Send

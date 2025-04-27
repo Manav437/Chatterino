@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";  // Import Navigate for redirection
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";  // Import Firebase Auth
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";  // Import Firebase Auth
 import { getDatabase, ref, set } from "firebase/database";
-import { auth } from "../../firebase.js";  // Firebase config initialization
+import { auth, database } from "../../firebase.js";  // Firebase config initialization
 import "./Register.css";
 
 function RegisterPage() {
@@ -21,18 +21,21 @@ function RegisterPage() {
             // Create a user with email and password using Firebase Authentication
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
-            console.log("User registered successfully:", user);
 
-            const db = getDatabase()
+            await updateProfile(user, {
+                displayName: name
+            });
+            // console.log("User registered successfully:", user.displayName);
 
-            await set(ref(db, "users/" + user.uid), {
+
+            await set(ref(database, "users/" + user.uid), {
                 name: name,
                 email: email,
                 uid: user.uid
             });
 
-            console.log("User registered successfully:", user);
-            alert("Registration successful!");
+            // console.log("User registered successfully:", user);
+            alert("Registration successfull! 🥳");
 
             setName("");
             setEmail("");

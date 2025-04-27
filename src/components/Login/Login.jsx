@@ -1,13 +1,14 @@
 import { use, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth"
+import { signInWithEmailAndPassword } from "firebase/auth"
+import { auth } from "../../firebase"
 import "./Login.css"
 
 function LoginPage() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const navigate = useNavigate()
-    const auth = getAuth()
+    // const auth = auth;
 
     const handleLogin = (e) => {
         e.preventDefault()
@@ -15,12 +16,13 @@ function LoginPage() {
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user
-                console.log("User logged in successfully:", user)
+                // console.log("User logged in successfully:", user)
+                alert("User logged in successfully! 😀")
                 localStorage.setItem("token", user.accessToken)
                 navigate("/")
             })
             .catch((error) => {
-                alert("Invalid email or password")
+                alert("Invalid email or password! 😥")
             })
     }
 
