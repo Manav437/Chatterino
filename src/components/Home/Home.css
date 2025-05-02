@@ -1,4 +1,8 @@
-/* @import "tailwindcss"; */
+@font-face {
+  font-family: Safiro;
+  src: url("../fonts/safiro-medium.otf") format("opentype");
+  font-weight: normal;
+}
 
 /* Your custom styles */
 .custom-btn {
@@ -207,7 +211,8 @@
 
 .get-started > h3 {
   color: #FDFAF6;
-  font-size: 2rem;
+  font-family: Safiro;
+  font-size: 2.5rem;
 }
 
 .get-started button {
@@ -285,14 +290,24 @@
 }
 
 .not-login-img {
+    height: 70vh;
+    width: 95%;
     margin-top:20px;
     margin-bottom: 15px;
-    width: 95%;
     border-radius: 20px;
-  height: 70vh;
+    padding: 4px; 
+    filter: contrast(1) brightness(1);
+    transition: filter 0.3s ease, box-shadow 0.4s ease;
+    /* border-radius: 50%; */
+}
+
+.not-login-img:hover {
+  filter: contrast(1.1) brightness(1.1) drop-shadow(0 2px 6px rgba(0,0,0,0.2));
+  box-shadow: 0 0 10px rgba(74, 144, 226, 0.6), 0 0 20px rgba(74, 144, 226, 0.4);
 }
 
 .features {
+  font-family: Safiro;
   gap: 20px;
   display: flex;
   flex-direction: column;
@@ -340,13 +355,13 @@
   width: 60%;
 }
 
-.one-img-div img {
+/* .one-img-div img {
   margin: 0 auto;
   border-radius: 10px;
   border: 1px solid grey;
   height: 350px;
   width: 80%;
-}
+} */
 
 .feature-one > div > p {
   border-left: 3px solid #000;
@@ -369,13 +384,13 @@
   width: 70%;
 }
 
-.two-img-div  img {
+/* .two-img-div  img {
   margin-left: 20px;
   border-radius: 10px;
   border: 1px solid grey;
   height: 350px;
   width: 90%;
-}
+} */
 
 .feature-two > div > p {
   border-radius: 10px;
@@ -398,13 +413,13 @@
   width: 70%;
 }
 
-.three-img-div  img {
+/* .three-img-div  img {
   margin: 0 auto;
   border-radius: 10px;
   border: 1px solid grey;
   height: 350px;
   width: 90%;
-}
+} */
 
 .feature-three > div > p{
   border-radius: 10px;

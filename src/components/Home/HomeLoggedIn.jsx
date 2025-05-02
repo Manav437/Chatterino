@@ -48,7 +48,6 @@ function HomeLoggedIn() {
     }, []);
 
 
-
     const handleNewPost = () => {
         setShowPostModal(true);
     }

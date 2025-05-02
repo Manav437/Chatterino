@@ -19,8 +19,9 @@
 .profile {
     color: black;
     width: 100%;
-    height: 90vh;
+    height: 95vh;
     margin: 0 auto;
+    margin-top: 0;
 }
 
 .nav-item:hover {
@@ -58,7 +59,7 @@ select::-webkit-scrollbar {
 }
 
 .update-profile input, .update-profile textarea {
-    border: 1px solid white;
+    border: 0px solid white;
 }
 
 .update-profile input:focus, .update-profile textarea:focus {

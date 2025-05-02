@@ -76,7 +76,6 @@ const ProfilePage = () => {
             setDisplayName(updatedName);
             setDisplayPhoto(updatedPhoto);
             setDisplayBio(updatedBio);
-            setDisplayPhoto(updatedPhoto);
             if (speaks.length > 0) setDisplaySpeaks(speaks);
             if (learning.length > 0) setDisplayLearning(learning);
 
@@ -118,16 +117,16 @@ const ProfilePage = () => {
             </div >
 
             <div className="profile" style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
-                <h1 style={{ width: "30%", textAlign: "center", border: "1px solid white", borderRadius: "15px", padding: "5px 7px", background: "black", marginTop: "10px", color: "white" }}>Profile Page</h1>
+                <h1 style={{ width: "25%", textAlign: "center", border: "1px solid white", borderRadius: "15px", padding: "5px 7px", background: "black", marginTop: "10px", color: "white" }}>Profile Page</h1>
                 {user ?
                     <div style={{
                         display: "flex",
                         flexDirection: "row",
                         gap: "40px",
                         flexWrap: "wrap",
-                        paddingTop: "30px",
+                        paddingTop: "15px",
                         justifyContent: "center",
-                        borderTop: "2px solid white"
+                        // borderTop: "2px solid white"
                     }}>
                         <div style={{
                             flex: 1,
@@ -156,7 +155,7 @@ const ProfilePage = () => {
                             />
                             <p style={{ color: "#F5EEDD", fontWeight: "bold", fontSize: "16px" }}>📧 {user.email}</p>
                             <p style={{ color: "#fff" }}>🧑 <strong style={{ textDecoration: "underline", textUnderlineOffset: "2px" }}>Name</strong>: {displayName}</p>
-                            <p style={{ color: "#fff" }}>💬 <strong style={{ textDecoration: "underline", textUnderlineOffset: "2px" }}>Bio</strong>: {displayBio || "No bio yet."}</p>
+                            <p style={{ color: "#fff" }}>💬 <strong style={{ textDecoration: "underline", textUnderlineOffset: "2px" }}>Bio</strong>: {displayBio || "[No bio yet]"}</p>
 
                             <hr style={{ border: "none", height: "2px", background: "white", borderRadius: "5px" }} />
 

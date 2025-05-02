@@ -5,15 +5,15 @@ function Footer() {
         <div style={{ display: "flex", alignItems: "center", flexDirection: "column", borderTop: "2px solid #2C2C2C" }}>
             <div style={{ textAlign: "center", display: "flex", justifyContent: "space-between", paddingTop: "20px", width: "80%" }}>
                 <div className="footer-links" style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", flexDirection: "column", paddingLeft: "20px" }} >
-                    <p style={{ marginBottom: "20px" }}><strong>SOCIALS</strong></p>
+                    <p style={{ textDecoration: "underline", textUnderlineOffset: "2px", marginBottom: "20px" }}><strong>SOCIALS</strong></p>
                     <p><a target="_blank" href="https://www.instagram.com/_man.av/">Insta</a></p>
                     <p><a target="_blank" href="https://www.linkedin.com/in/manav-gusain/">Linked In</a></p>
-                    <p><a target="_blank" href="https://x.com/Manav437">X</a></p>
+                    <p><a target="_blank" href="https://x.com/Manav437">X(Formely Twitter)</a></p>
                     <p><a target="_blank" href="https://in.pinterest.com/elite_like_that/">Pinterest</a></p>
                 </div>
 
                 <div className="footer-links" style={{ display: "flex", flexDirection: "column" }}>
-                    <p style={{ marginBottom: "20px" }}><strong>ABOUT</strong></p>
+                    <p style={{ textDecoration: "underline", textUnderlineOffset: "2px", marginBottom: "20px" }}><strong>ABOUT</strong></p>
                     <p><a href="">Our story</a></p>
                     <p><a href="">Terms & Conditions</a></p>
                     <p><a href="">Privacy Policy</a></p>
@@ -21,7 +21,7 @@ function Footer() {
                 </div>
 
                 <div className="footer-links" style={{ display: "flex", alignItems: "center", flexDirection: "column", paddingRight: "20px" }}>
-                    <p style={{ marginBottom: "20px" }}><strong>HELP</strong></p>
+                    <p style={{ textDecoration: "underline", textUnderlineOffset: "2px", marginBottom: "20px" }}><strong>HELP</strong></p>
                     <p><a href="">FAQs</a></p>
                     <p><a href="">Contact</a></p>
                 </div>
