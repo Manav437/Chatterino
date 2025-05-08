@@ -2,6 +2,8 @@
 
 Chatterino is a modern real-time chat application built with React and Vite. It allows users to communicate instantly in a fast, minimal, and responsive interface.
 
+<img src="https://i.ibb.co/KjsK1P0q/shots.png"/>
+
 ## 🚀 Features
 
 - 🔐 Authentication (sign up / login)
