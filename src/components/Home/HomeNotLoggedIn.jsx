@@ -22,7 +22,7 @@ function HomeNotLoggedIn() {
                     <h3 className="h3-two" >gsn</h3>
                 </div>
 
-                <img src="/mogul-moves-3.svg" alt="" data-aos="zoom-in" data-aos-easing="ease-out-bounce" data-aos-duration="1500" />
+                <img src="/mogul-moves-3.svg" alt="" />
 
                 <div className="navbar-two">
                     <h3 className="h3-three">April</h3>
@@ -49,17 +49,17 @@ function HomeNotLoggedIn() {
                 </div>
             </div>
 
-            <img className="not-login-img"
-                src="https://framerusercontent.com/images/CDNP3QX8DV14r9QNpxxQYRDunY.png?scale-down-to=4096" alt="" />
+            <img className="not-login-img" src="/chatterino-img.png" />
+            {/* // src="https://framerusercontent.com/images/CDNP3QX8DV14r9QNpxxQYRDunY.png?scale-down-to=4096" alt="" /> */}
 
             <div className="features">
-                <h1 style={{ letterSpacing: "1.5px", fontSize: "3rem" }}>Features</h1>
+                <h1 style={{ color: "#F2C078", letterSpacing: "1.3px", fontSize: "3rem" }}>Features</h1>
                 <div className="feature-one">
-                    <div style={{ paddingBottom: "20px", borderBottom: "3px dashed #2C2C2C", width: "90%", display: "flex", flexDirection: "row", alignItems: "center" }} data-aos="fade-up">
-                        <img style={{ border: "1px solid white", height: "50vh", borderRadius: "20px", width: "45%" }} src="/feed-posts-img.png" alt="" />
+                    <div style={{ paddingBottom: "20px", borderBottom: "5px dotted rgb(94, 93, 93)", width: "90%", display: "flex", flexDirection: "row", alignItems: "center" }} data-aos="fade-up">
+                        <img style={{ height: "50vh", borderRadius: "20px", width: "45%" }} src="/feed-posts-img.png" alt="" />
 
                         <div style={{ height: "70%", display: "flex", flexDirection: "column", justifyContent: "flex-start", width: "55%" }}>
-                            <h3 style={{ textAlign: "start", fontSize: "2rem", margin: "0 auto", width: "80%", marginTop: "0", textDecoration: "underline", textUnderlineOffset: "4px" }}>POSTS</h3>
+                            <h3 style={{ color: "#DDF6D2", textAlign: "center", fontSize: "2rem", margin: "0 auto", width: "80%", marginTop: "0", textDecoration: "underline", textUnderlineOffset: "4px" }}>POSTS</h3>
                             <p style={{ textAlign: "start", margin: "20px auto", width: "80%" }} data-aos="fade-up">Share your thoughts, express yourself freely,
                                 and let your voice be heard. Whether it's a quick update, a memorable photo, or a
                                 heartfelt story, every post is a chance to connect. Capture life’s moments —
@@ -71,10 +71,10 @@ function HomeNotLoggedIn() {
                 </div>
 
                 <div className="feature-two">
-                    <div style={{ paddingBottom: "20px", borderBottom: "3px dashed #2C2C2C", width: "90%", display: "flex", flexDirection: "row", alignItems: "center" }} data-aos="fade-up">
+                    <div style={{ paddingBottom: "20px", borderBottom: "5px dotted rgb(94, 93, 93)", width: "90%", display: "flex", flexDirection: "row", alignItems: "center" }} data-aos="fade-up">
                         <div style={{ height: "70%", display: "flex", flexDirection: "column", justifyContent: "flex-start", width: "55%" }}>
-                            <h3 style={{ textAlign: "end", fontSize: "2rem", margin: "0 auto", width: "80%", textDecoration: "underline", textUnderlineOffset: "4px" }}>CHATROOMS</h3>
-                            <p style={{ textAlign: "end", margin: "20px auto", width: "80%" }} data-aos="fade-up">Auto-generated chatrooms tailored to the languages
+                            <h3 style={{ color: "#DDF6D2", textAlign: "center", fontSize: "2rem", margin: "0 auto", width: "80%", textDecoration: "underline", textUnderlineOffset: "4px" }}>CHATROOMS</h3>
+                            <p style={{ textAlign: "center", margin: "20px auto", width: "80%" }} data-aos="fade-up">Auto-generated chatrooms tailored to the languages
                                 you speak and learn — instantly connect with people who share your passions and
                                 vibe with your journey. Practice, make friends, and exchange cultures in real time.
                                 Every conversation brings you closer to fluency and meaningful connections, all in
@@ -90,8 +90,8 @@ function HomeNotLoggedIn() {
                         <img style={{ border: "1px solid white", height: "50vh", width: "45%", borderRadius: "20px" }} src="/update-profile.png" alt="" />
 
                         <div style={{ height: "60%", display: "flex", flexDirection: "column", justifyContent: "flex-start", width: "55%" }}>
-                            <h3 style={{ textAlign: "start", fontSize: "2rem", margin: "0 auto", width: "80%", textDecoration: "underline", textUnderlineOffset: "4px" }}>CUSTOMISE PROFILE</h3>
-                            <p style={{ textAlign: "start", margin: "20px auto", width: "80%", }} data-aos="fade-up">Make it yours. Customize your profile with
+                            <h3 style={{ color: "#DDF6D2", textAlign: "center", fontSize: "2rem", margin: "0 auto", width: "80%", textDecoration: "underline", textUnderlineOffset: "4px" }}>CUSTOMISE PROFILE</h3>
+                            <p style={{ textAlign: "center", margin: "20px auto", width: "80%", }} data-aos="fade-up">Make it yours. Customize your profile with
                                 a unique username, a bio that tells your story, and a profile picture that shows the
                                 real you. Let your personality shine and give others a
                                 glimpse into who you are, all in one place.</p>

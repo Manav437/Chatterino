@@ -12,6 +12,10 @@
     height: 100px;
 }
 
+.login-div {
+    height: 500px;
+}
+
 .login-div > form > label > input {
     outline: none;
     border: 1px solid #2C2C2C;
@@ -21,8 +25,20 @@
 .login-div > form > label > input:focus {
     outline: none;
     border: 1px solid #2C2C2C;
-    background: #000000;
+    background: #181818;
+    color: rgb(255, 255, 255);
+}
+
+.login-btn {
+    background-color: #67AE6E;
     color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+.login-btn:hover {
+    background-color: #5a9b5f;
+    color: black;
+    transform: scale(1.01);
 }
 
 @media screen and (max-width: 425px){

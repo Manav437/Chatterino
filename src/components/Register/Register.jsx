@@ -52,7 +52,7 @@ function RegisterPage() {
         <div className="register-container">
             <Link to="/"><img src="/mogul-moves.svg" alt="" /></Link>
             <div className="register-div">
-                <h1>SIGN UP</h1>
+                <h1 style={{ margin: "0" }}>SIGN UP</h1>
                 <form autoComplete="off" onSubmit={(e) => { e.preventDefault(); handleAddUser(); }}
                     style={{
                         display: "flex",
@@ -61,10 +61,10 @@ function RegisterPage() {
                         minWidth: "300px"
                     }}>
                     <label style={{ display: "flex", flexDirection: "column" }}>
-                        Name
+                        <p style={{ margin: "3px 0" }}>Username</p>
                         <input className="register-input"
                             autoComplete="new-name"
-                            placeholder="Enter a username"
+                            placeholder="noobmaster"
                             style={{ height: "30px", padding: "5px", paddingLeft: "10px" }}
                             type="text"
                             value={name}
@@ -74,11 +74,11 @@ function RegisterPage() {
                         />
                     </label>
                     <label style={{ display: "flex", flexDirection: "column" }}>
-                        Email
+                        <p style={{ margin: "3px 0" }}>Email</p>
                         <input
                             autoComplete="new-email"
                             className="register-input"
-                            placeholder="Enter your email"
+                            placeholder="xyz@hotmail.com"
                             style={{ height: "30px", padding: "5px", paddingLeft: "10px" }}
                             type="email"
                             value={email}
@@ -88,10 +88,10 @@ function RegisterPage() {
                         />
                     </label>
                     <label style={{ display: "flex", flexDirection: "column" }}>
-                        Password
+                        <p style={{ margin: "3px 0" }}>Password</p>
                         <input
                             autoComplete="new-password"
-                            placeholder="Enter strong password"
+                            placeholder="********"
                             style={{ height: "30px", padding: "5px", paddingLeft: "10px" }}
                             type="password"
                             value={password}
@@ -99,12 +99,14 @@ function RegisterPage() {
                             required
                         />
                     </label>
-                    <button type="submit" style={{
+                    <label style={{ margin: "3px 0", textAlign: "start" }}>
+                        <input style={{ cursor: "pointer" }} type="checkbox" />I agree to terms and conditions.
+                    </label>
+                    <button className="register-btn" type="submit" style={{
+                        fontFamily: "Poppins",
                         fontSize: "16px",
                         height: "35px",
                         cursor: "pointer",
-                        backgroundColor: "#67AE6E",
-                        color: "white",
                         border: "none",
                         borderRadius: "4px"
                     }}>Sign Up</button>
@@ -112,7 +114,7 @@ function RegisterPage() {
 
 
                 {error && <p style={{ color: "red" }}>{error}</p>}  {/* Show error if any */}
-                <p>Already have an account? <Link to='/login' style={{ color: "#328E6E", textDecoration: "underline" }}>Login</Link></p>
+                <p style={{ margin: "0 0 3px 0" }}>Already have an account? <Link to='/login' style={{ color: "#328E6E", textDecoration: "underline", textUnderlineOffset: "3px" }}>Login</Link></p>
             </div>
         </div>
     );

@@ -1,32 +1,38 @@
 .marquee {
-    overflow: hidden;
-    white-space: nowrap;
-  }
+  overflow: hidden;
+  white-space: nowrap;
+  height: 70px; /* Set a fixed height or adjust as needed */
+  display: flex;
+  align-items: center;
+}
   
-  .marquee-content {
+.marquee-content {
     display: flex;
     flex-direction: row;
     align-items: center;
-    animation: scroll 10s linear infinite;
-  }
-
-
-  
+    animation: scroll 20s linear infinite;
+    transition: transform .5s ease-out;
+}
+ 
 .marquee-content h1 {
     display: inline-block;
     margin: 0 20px;
     font-size: 35px;
+    line-height: 1;
+}
+
+.marquee-content:hover {
+  animation-play-state: paused;
 }
   
-  @keyframes scroll {
+@keyframes scroll {
     0% {
       transform: translateX(0%);
     }
     100% {
       transform: translateX(-50%);
     }
-  }
-  
+}
 
 
 .h1-one {

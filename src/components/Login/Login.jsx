@@ -29,30 +29,33 @@ function LoginPage() {
     return (
         <div className="login-container">
             <Link to="/"><img src="/mogul-moves-2.svg" alt="" /></Link>
-            <div className="login-div" style={{ borderRadius: "20px", padding: "20px", border: "3px solid #2C2C2C", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "50%", gap: "20px" }}>
+            <div className="login-div" style={{ borderRadius: "20px", padding: "20px", border: "3px solid #2C2C2C", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "55%", gap: "15px" }}>
                 <h1 style={{ margin: "0" }}>LOGIN</h1>
                 <form onSubmit={handleLogin} style={{ display: "flex", flexDirection: "column", gap: "15px", minWidth: "300px" }}>
                     <label style={{ display: "flex", flexDirection: "column" }}>
-                        Email
-                        <input type="email" value={email} autoComplete="email" onChange={(e) => setEmail(e.target.value)} style={{ height: "30px", padding: "5px", width: "95%", paddingLeft: "10px" }} placeholder="Enter your email" required />
+                        <p style={{ paddingLeft: "5px", margin: "5px 0", textAlign: "center" }}>Email</p>
+                        <input type="email" value={email} autoComplete="email" onChange={(e) => setEmail(e.target.value)} style={{ height: "30px", padding: "5px", width: "95%", paddingLeft: "10px" }} placeholder="xyz@hotmail.com" required />
                     </label>
                     <label style={{ display: "flex", flexDirection: "column" }}>
-                        Password
-                        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} style={{ marginTop: "5px", padding: "5px", height: "30px", width: "95%", paddingLeft: "10px" }} placeholder="Enter your password" required />
+                        <p style={{ paddingLeft: "5px", margin: "5px 0", textAlign: "center" }}>Password</p>
+                        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} style={{ marginTop: "5px", padding: "5px", height: "30px", width: "95%", paddingLeft: "10px" }} placeholder="**********" required />
+                    </label>
+                    <label style={{ textAlign: "start" }}>
+                        <input type="checkbox" />
+                        Remember Me
                     </label>
                     <button className="login-btn" style={{
+                        fontFamily: "Poppins",
                         fontSize: "16px",
                         width: "100%",
                         margin: "0 auto",
                         height: "35px",
                         cursor: "pointer",
-                        backgroundColor: "#67AE6E",
-                        color: "white",
                         border: "none",
                         borderRadius: "4px"
                     }}>Log In</button>
                 </form>
-                <p>Don't have an account? <Link style={{ color: "#328E6E" }} to='/register'>SignUp</Link></p>
+                <p>Don't have an account? <Link style={{ textDecoration: "underline", textUnderlineOffset: "3px", color: "#328E6E" }} to='/register'>SignUp</Link></p>
             </div>
         </div>
     )

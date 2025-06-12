@@ -132,8 +132,8 @@ function HomeLoggedIn() {
                 </div>
             </div >
             <div className="section-two">
-                <div style={{ zIndex: "1000", height: "20px", position: "fixed", top: "0", width: "47.5%", borderBottom: "1px solid white", background: "rgba(26, 26, 26, 0.8)", lineHeight: "2rem", fontSize: "20px", paddingTop: "20px", paddingBottom: "20px" }}>
-                    <h5 style={{ margin: "0" }}>HOME</h5>
+                <div style={{ zIndex: "1000", position: "fixed", top: "0", width: "47.5%", borderBottom: "2px solid cyan", background: "rgba(26, 26, 26, 0.8)", lineHeight: "2rem", fontSize: "20px", paddingTop: "20px", paddingBottom: "20px" }}>
+                    <h5 style={{ fontSize: "1.7rem", margin: "0" }}>HOME</h5>
                 </div>
                 <div className="post-feed" style={{ marginTop: "80px" }}>
                     {posts.map((post) => {
@@ -143,38 +143,39 @@ function HomeLoggedIn() {
                             <div key={post.postId} className="post-card">
                                 <div className="post-header">
                                     {/* {console.log(postUser.photoURL)} */}
-                                    <img src={postUser?.photoURL || "./user-icon.png"} alt="user" className="post-avatar" />
-                                    <div className="post-user-info">
-                                        <p className="post-username">{postUser?.name || post.userId}</p>
-                                        <p className="post-time">{new Date(post.createdAt).toLocaleString('en-IN', {
-                                            year: "numeric",
-                                            month: 'short',
-                                            day: 'numeric',
-                                            hour: '2-digit',
-                                            minute: '2-digit',
-                                        })}</p>
+                                    <div style={{ display: "flex", gap: "20px", justifyContent: "space-between" }}>
+                                        <img src={postUser?.photoURL || "./user-icon.png"} alt="user" className="post-avatar" />
+                                        <div className="post-user-info">
+                                            <p className="post-username">{postUser?.name || post.userId}</p>
+                                            <p className="post-time">
+                                                {(() => {
+                                                    const date = new Date(post.createdAt);
+                                                    const time = date.toLocaleTimeString('en-IN', {
+                                                        hour: '2-digit',
+                                                        minute: '2-digit',
+                                                        hour12: true,
+                                                    });
+                                                    const day = String(date.getDate()).padStart(2, '0');
+                                                    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+                                                    const year = date.getFullYear();
+
+                                                    const formattedDate = `${day}/${month}/${year}`;
+                                                    return `${time}, ${formattedDate}`;
+                                                })()}
+                                            </p>
+                                        </div>
                                     </div>
 
+
                                     <div style={{
-                                        margin: "auto 0 auto 50%", display: "flex", justifyContent: "center", alignItems: "center", padding: "10px 0"
+                                        margin: "auto 0 auto auto", display: "flex", gap: "10px", justifyContent: "center", alignItems: "center", padding: "10px 0"
                                     }}>
-                                        <button onClick={() => handleAddLike(post.postId, post.likes)} style={{
-                                            fontSize: "17px",
-                                            display: "flex",
-                                            flexDirection: "row",
-                                            alignItems: "center",
-                                            padding: "5px 10px",
-                                            cursor: "pointer",
-                                            background: "#2c2c2c",
-                                            border: "1px solid white",
-                                            borderRadius: "10px",
-                                            color: "inherit"
-                                        }}>
+                                        <button className="like-btn" onClick={() => handleAddLike(post.postId, post.likes)}>
                                             {/* <img src="/like-img.png" alt="" /> */}
                                             {post.likes && post.likes[auth.currentUser.uid] ? "👎🏻 Dislike" : "👍🏻 Like"}
                                         </button>
 
-                                        <p style={{ marginLeft: "10px", width: "25px", borderRadius: "50%", background: "#2C2C2C" }}>{post.likes ? Object.values(post.likes).filter(v => v === true).length : 0}</p>
+                                        <p style={{ fontSize: "1.1rem", width: "25px", borderRadius: "50%", background: "#2C2C2C" }}>{post.likes ? Object.values(post.likes).filter(v => v === true).length : 0}</p>
                                     </div>
                                 </div>
                                 <div className="post-body">
@@ -192,13 +193,11 @@ function HomeLoggedIn() {
                     flexDirection: "row",
                     alignItems: "center",
                     justifyContent: "center",
-                    borderBottom: "1px solid white",
-                    width: "80%",
+                    // width: "80%",
                     margin: "20px auto",
-                    paddingLeft: "5px",
-                    marginBottom: "10px",
-                    gap: "10px",
-                    paddingBottom: "20px"
+                    padding: ".5rem 1rem",
+                    gap: "20px",
+                    // paddingBottom: "20px"
                 }}>
                     <button
                         className="home-addpost-btn"
@@ -233,8 +232,8 @@ function HomeLoggedIn() {
                     </button>
                 </div>
 
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginTop: "20px" }}>
-                    <h2>Connect with these users</h2>
+                <div style={{ margin: "0 auto", width: "90%", borderTop: "1px solid white", display: "flex", flexDirection: "column", alignItems: "center", marginTop: "20px" }}>
+                    <h2>Connect with users</h2>
                     {users.map((u) => (
                         <div key={u.uid} className="chat-user-div" onClick={triggerAlert} style={{ width: "70%", padding: "5px", border: "1px solid white", borderRadius: "10px", cursor: "pointer", margin: "5px 0" }}>
                             {u.name || <u className="email"></u>}

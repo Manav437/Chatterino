@@ -117,7 +117,7 @@ const ProfilePage = () => {
             </div >
 
             <div className="profile" style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
-                <h1 style={{ width: "25%", textAlign: "center", border: "1px solid white", borderRadius: "15px", padding: "5px 7px", background: "black", marginTop: "10px", color: "white" }}>Profile Page</h1>
+                <h1 style={{ width: "25%", textAlign: "center", border: "1px solid white", borderRadius: "15px", padding: "5px 7px", background: "black", marginTop: "10px", color: "white" }}>Welcome user</h1>
                 {user ?
                     <div style={{
                         display: "flex",
@@ -133,12 +133,13 @@ const ProfilePage = () => {
                             minWidth: "300px",
                             maxWidth: "400px",
                             backgroundColor: "black",
-                            padding: "30px",
+                            padding: "20px",
                             border: "1px solid white",
                             borderRadius: "15px",
                             boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
                             textAlign: "center"
                         }}>
+                            <h2 style={{ marginTop: "0", color: "#EEEFE0", textAlign: "center" }}>⚝ <span style={{ textDecoration: "underline", textUnderlineOffset: "5px" }}>User Profile</span> </h2>
                             <img
                                 src={displayPhoto || "/noimg-icon.png"}
                                 alt="Profile"
@@ -148,8 +149,7 @@ const ProfilePage = () => {
                                     borderRadius: "25px",
                                     objectFit: "cover",
                                     border: "2px solid white",
-                                    padding: "2px",
-                                    background: "lightgreen",
+                                    padding: "3px",
                                     marginBottom: "10px"
                                 }}
                             />
@@ -160,12 +160,11 @@ const ProfilePage = () => {
                             <hr style={{ border: "none", height: "2px", background: "white", borderRadius: "5px" }} />
 
                             {displaySpeaks.length > 0 && (
-                                <div style={{ marginTop: "15px" }}>
-                                    <strong style={{ color: "#fff" }}>🗣️ Speaks:</strong>
-                                    <div style={{ borderRadius: "20px", background: "white", padding: "10px", display: "flex", flexWrap: "wrap", gap: "5px", marginTop: "5px" }}>
+                                <div style={{ textAlign: "start", marginTop: "15px" }}>
+                                    <strong style={{ paddingLeft: "5px", color: "#fff" }}>🗣️ Speaks:</strong>
+                                    <div style={{ borderRadius: "20px", background: "white", padding: "10px", display: "flex", flexWrap: "wrap", gap: "5px", marginTop: "15px" }}>
                                         {displaySpeaks.map(lang => (
                                             <span key={lang} style={{
-                                                cursor: "alias",
                                                 padding: "5px 10px",
                                                 borderRadius: "15px",
                                                 border: "1px solid black",
@@ -179,12 +178,11 @@ const ProfilePage = () => {
                             )}
 
                             {displayLearning.length > 0 && (
-                                <div style={{ marginTop: "15px" }}>
-                                    <strong style={{ color: "#fff" }}>📚 Learning:</strong>
-                                    <div style={{ borderRadius: "20px", background: "white", padding: "10px", display: "flex", flexWrap: "wrap", gap: "5px", marginTop: "5px" }}>
+                                <div style={{ textAlign: "start", marginTop: "15px" }}>
+                                    <strong style={{ paddingLeft: "5px", color: "#fff" }}>📚 Learning:</strong>
+                                    <div style={{ borderRadius: "20px", background: "white", padding: "10px", display: "flex", flexWrap: "wrap", gap: "5px", marginTop: "15px" }}>
                                         {displayLearning.map(lang => (
                                             <span key={lang} style={{
-                                                cursor: "alias",
                                                 padding: "5px 10px",
                                                 borderRadius: "15px",
                                                 border: "1px solid black",
@@ -209,7 +207,7 @@ const ProfilePage = () => {
                             backgroundColor: "black",
                             // textAlign: "center"
                         }}>
-                            <h2 style={{ margin: "0", marginBottom: "20px", color: "white", textAlign: "center" }}>⛭ <span style={{ textDecoration: "underline", textUnderlineOffset: "5px" }}>Update Your Details</span> </h2>
+                            <h2 style={{ margin: "0", marginBottom: "20px", color: "#EEEFE0", textAlign: "center" }}>⛭ <span style={{ textDecoration: "underline", textUnderlineOffset: "5px" }}>Update Your Details</span> </h2>
 
                             <input
                                 type="text"

@@ -21,20 +21,31 @@
     align-items: center;
     margin-bottom:0;
     margin: 35% auto;
-
     border-radius: 20px;
-    padding: 20px;
+    padding: 0 20px;
     border: 3px solid #2C2C2C;
-    height: 65%;
+    height: 67%;
     gap: 20px;
   
-  }
+}
 
-  .register-div > form > label > input {
+.register-div > form > label > input {
     /* margin-left: 10px; */
     outline: none;
     border: 1px solid #2C2C2C;
     border-radius: 5px;
+}
+
+.register-btn {
+  background-color: #67AE6E;
+  color: white;
+  transition: all 0.3s ease-in-out;
+}
+
+.register-btn:hover {
+  background: #7ac582;
+  color: black;
+  transform: scale(1.01);
 }
 
 .register-div > form > label > input:focus {
