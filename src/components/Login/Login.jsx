@@ -1,64 +1,109 @@
-import { use, useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
-import { signInWithEmailAndPassword } from "firebase/auth"
-import { auth } from "../../firebase"
-import "./Login.css"
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase";
+import "./Login.css";
 
 function LoginPage() {
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const navigate = useNavigate()
-    // const auth = auth;
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
 
-    const handleLogin = (e) => {
-        e.preventDefault()
+    const navigate = useNavigate();
 
-        signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                const user = userCredential.user
-                // console.log("User logged in successfully:", user)
-                alert("User logged in successfully! 😀")
-                localStorage.setItem("token", user.accessToken)
-                navigate("/")
-            })
-            .catch((error) => {
-                alert("Invalid email or password! 😥")
-            })
-    }
+    const handleLogin = async (e) => {
+        e.preventDefault();
+
+        setLoading(true);
+        setError("");
+
+        try {
+            await signInWithEmailAndPassword(auth, email, password);
+            navigate("/");
+        } catch (error) {
+            if (
+                error.code === "auth/user-not-found" ||
+                error.code === "auth/wrong-password"
+            ) {
+                setError("Invalid email or password. Please try again.");
+            } else if (error.code === "auth/too-many-requests") {
+                setError(
+                    "Access to this account has been temporarily disabled due to many failed login attempts.",
+                );
+            } else {
+                setError(
+                    "An unexpected error occurred. Please try again later.",
+                );
+            }
+            console.error("Login Error:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
-        <div className="login-container">
-            <Link to="/"><img src="/mogul-moves-2.svg" alt="" /></Link>
-            <div className="login-div" style={{ borderRadius: "20px", padding: "20px", border: "3px solid #2C2C2C", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "55%", gap: "15px" }}>
-                <h1 style={{ margin: "0" }}>LOGIN</h1>
-                <form onSubmit={handleLogin} style={{ display: "flex", flexDirection: "column", gap: "15px", minWidth: "300px" }}>
-                    <label style={{ display: "flex", flexDirection: "column" }}>
-                        <p style={{ paddingLeft: "5px", margin: "5px 0", textAlign: "center" }}>Email</p>
-                        <input type="email" value={email} autoComplete="email" onChange={(e) => setEmail(e.target.value)} style={{ height: "30px", padding: "5px", width: "95%", paddingLeft: "10px" }} placeholder="xyz@hotmail.com" required />
+        <div className="auth-container">
+            <Link to="/">
+                <img src="/mogul-moves-2.svg" alt="Logo" />
+            </Link>
+
+            <div className="auth-card">
+                <h1>LOGIN</h1>
+
+                <form onSubmit={handleLogin} className="auth-form">
+                    <label>
+                        Email
+                        <input
+                            type="email"
+                            value={email}
+                            autoComplete="email"
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="xyz@hotmail.com"
+                            required
+                        />
                     </label>
-                    <label style={{ display: "flex", flexDirection: "column" }}>
-                        <p style={{ paddingLeft: "5px", margin: "5px 0", textAlign: "center" }}>Password</p>
-                        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} style={{ marginTop: "5px", padding: "5px", height: "30px", width: "95%", paddingLeft: "10px" }} placeholder="**********" required />
+
+                    <label>
+                        Password
+                        <input
+                            type="password"
+                            value={password}
+                            autoComplete="current-password"
+                            onChange={(e) => setPassword(e.target.value)}
+                            placeholder="**********"
+                            required
+                        />
                     </label>
-                    <label style={{ textAlign: "start" }}>
+
+                    <label
+                        style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            cursor: "pointer",
+                        }}
+                    >
                         <input type="checkbox" />
-                        Remember Me
+                        <span style={{ fontSize: "13px" }}>Remember me</span>
                     </label>
-                    <button className="login-btn" style={{
-                        fontFamily: "Poppins",
-                        fontSize: "16px",
-                        width: "100%",
-                        margin: "0 auto",
-                        height: "35px",
-                        cursor: "pointer",
-                        border: "none",
-                        borderRadius: "4px"
-                    }}>Log In</button>
+
+                    {error && <p className="error-message">{error}</p>}
+
+                    <button className="auth-btn" disabled={loading}>
+                        {loading ? "Logging in..." : "Log In"}
+                    </button>
                 </form>
-                <p>Don't have an account? <Link style={{ textDecoration: "underline", textUnderlineOffset: "3px", color: "#328E6E" }} to='/register'>SignUp</Link></p>
+
+                <p>
+                    Don’t have an account?{" "}
+                    <Link to="/register" className="auth-link">
+                        Sign Up
+                    </Link>
+                </p>
             </div>
         </div>
-    )
+    );
 }
 
-export default LoginPage
+export default LoginPage;

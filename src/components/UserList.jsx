@@ -18,7 +18,7 @@ const UserList = () => {
                     </p>
                 ))}
             </div>
-        </div >
+        </div>
     );
 };
 

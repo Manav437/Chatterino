@@ -9,18 +9,17 @@ export const startChat = async (currentUserId, otherUserId) => {
     const snapshot = await get(chatRef);
 
     if (!snapshot.exists()) {
-        // Create the chat node if it doesn't exist
         await set(chatRef, {
             users: {
                 [currentUserId]: true,
-                [otherUserId]: true
+                [otherUserId]: true,
             },
-            messages: {} // optional: or leave it until the first message
+            messages: {},
         });
         console.log("New chat started ✅");
     } else {
         console.log("Chat already exists ✅");
     }
 
-    return chatId; // Return the chatId to open or continue the chat
+    return chatId;
 };

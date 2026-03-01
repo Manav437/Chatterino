@@ -1,120 +1,164 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";  // Import Navigate for redirection
-import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";  // Import Firebase Auth
-import { getDatabase, ref, set } from "firebase/database";
-import { auth, database } from "../../firebase.js";  // Firebase config initialization
+import { useNavigate, Link } from "react-router-dom";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { ref, set } from "firebase/database";
+import { auth, database } from "../../firebase.js";
 import "./Register.css";
 
 function RegisterPage() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
+    const [termsAgreed, setTermsAgreed] = useState(false);
 
-    const handleAddUser = async () => {
+    const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
+
+    const navigate = useNavigate();
+
+    const handleAddUser = async (event) => {
+        event.preventDefault();
+
         if (!name || !email || !password) {
-            alert("Please fill all the fields!");
+            setError("Please fill in all the fields!");
+            return;
+        }
+        if (!termsAgreed) {
+            setError("You must agree to the terms and conditions.");
             return;
         }
 
+        setLoading(true);
+        setError("");
+
         try {
-            // Create a user with email and password using Firebase Authentication
-            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const userCredential = await createUserWithEmailAndPassword(
+                auth,
+                email,
+                password,
+            );
             const user = userCredential.user;
 
             await updateProfile(user, {
-                displayName: name
+                displayName: name,
             });
-            // console.log("User registered successfully:", user.displayName);
-
 
             await set(ref(database, "users/" + user.uid), {
                 name: name,
                 email: email,
-                uid: user.uid
+                uid: user.uid,
             });
 
-            // console.log("User registered successfully:", user);
-            alert("Registration successfull! 🥳");
-
-            setName("");
-            setEmail("");
-            setPassword("");
-            localStorage.setItem("token", user.accessToken);  // Store the token in local storage
-            useNavigate("/")
+            navigate("/");
         } catch (err) {
-            setError(err.message);  // Display any error message
+            if (err.code === "auth/email-already-in-use") {
+                setError("This email is already registered. Please login.");
+            } else if (err.code === "auth/weak-password") {
+                setError("Password should be at least 6 characters long.");
+            } else {
+                setError("Failed to create an account. Please try again.");
+            }
             console.error("Error registering user:", err);
+        } finally {
+            setLoading(false);
         }
     };
 
     return (
         <div className="register-container">
-            <Link to="/"><img src="/mogul-moves.svg" alt="" /></Link>
-            <div className="register-div">
+            <Link className="logo-link" to="/">
+                <img src="/mogul-moves.svg" alt="Mogul Moves Logo" />
+            </Link>
+            <div className="register-card">
                 <h1 style={{ margin: "0" }}>SIGN UP</h1>
-                <form autoComplete="off" onSubmit={(e) => { e.preventDefault(); handleAddUser(); }}
+                <form
+                    autoComplete="off"
+                    onSubmit={handleAddUser}
                     style={{
                         display: "flex",
                         flexDirection: "column",
-                        gap: "15px",
-                        minWidth: "300px"
-                    }}>
-                    <label style={{ display: "flex", flexDirection: "column" }}>
-                        <p style={{ margin: "3px 0" }}>Username</p>
-                        <input className="register-input"
-                            autoComplete="new-name"
-                            placeholder="noobmaster"
-                            style={{ height: "30px", padding: "5px", paddingLeft: "10px" }}
-                            type="text"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            required
+                        gap: "10px",
+                        minWidth: "300px",
+                    }}
+                >
+                    <label style={{ textAlign: "start" }}>Username</label>
+                    <input
+                        className="register-input"
+                        autoComplete="new-name"
+                        placeholder="noobmaster"
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                    />
 
-                        />
-                    </label>
-                    <label style={{ display: "flex", flexDirection: "column" }}>
-                        <p style={{ margin: "3px 0" }}>Email</p>
-                        <input
-                            autoComplete="new-email"
-                            className="register-input"
-                            placeholder="xyz@hotmail.com"
-                            style={{ height: "30px", padding: "5px", paddingLeft: "10px" }}
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
+                    <label style={{ textAlign: "start" }}>Email</label>
+                    <input
+                        className="register-input"
+                        autoComplete="new-email"
+                        placeholder="xyz@hotmail.com"
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                    />
 
-                        />
-                    </label>
-                    <label style={{ display: "flex", flexDirection: "column" }}>
-                        <p style={{ margin: "3px 0" }}>Password</p>
+                    <label style={{ textAlign: "start" }}>Password</label>
+                    <input
+                        className="register-input"
+                        autoComplete="new-password"
+                        placeholder="********"
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+
+                    <label
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "7px",
+                            margin: "3px 0",
+                            textAlign: "start",
+                            fontSize: "13px",
+                        }}
+                    >
                         <input
-                            autoComplete="new-password"
-                            placeholder="********"
-                            style={{ height: "30px", padding: "5px", paddingLeft: "10px" }}
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
+                            style={{ cursor: "pointer" }}
+                            type="checkbox"
+                            checked={termsAgreed}
+                            onChange={(e) => setTermsAgreed(e.target.checked)}
                         />
+                        I agree to terms and conditions.
                     </label>
-                    <label style={{ margin: "3px 0", textAlign: "start" }}>
-                        <input style={{ cursor: "pointer" }} type="checkbox" />I agree to terms and conditions.
-                    </label>
-                    <button className="register-btn" type="submit" style={{
-                        fontFamily: "Poppins",
-                        fontSize: "16px",
-                        height: "35px",
-                        cursor: "pointer",
-                        border: "none",
-                        borderRadius: "4px"
-                    }}>Sign Up</button>
+
+                    <button
+                        className="register-btn"
+                        type="submit"
+                        disabled={loading}
+                    >
+                        {loading ? "Signing Up..." : "Sign up"}
+                    </button>
+
+                    <div className="error-placeholder">
+                        {error && <p className="error-message">{error}</p>}
+                    </div>
                 </form>
 
-
-                {error && <p style={{ color: "red" }}>{error}</p>}  {/* Show error if any */}
-                <p style={{ margin: "0 0 3px 0" }}>Already have an account? <Link to='/login' style={{ color: "#328E6E", textDecoration: "underline", textUnderlineOffset: "3px" }}>Login</Link></p>
+                <p style={{ margin: "5px 0 3px 0" }}>
+                    Already have an account?{" "}
+                    <Link
+                        to="/login"
+                        style={{
+                            color: "#328E6E",
+                            textDecoration: "underline",
+                            textUnderlineOffset: "3px",
+                        }}
+                    >
+                        Login
+                    </Link>
+                </p>
             </div>
         </div>
     );

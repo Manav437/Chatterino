@@ -1,52 +1,190 @@
 @font-face {
-  font-family: Safiro;
-  src: url("../fonts/safiro-medium.otf") format("opentype");
-  font-weight: normal;
-}
-
-profile h1 {
     font-family: Safiro;
+    src: url("../fonts/safiro-medium.otf") format("opentype");
+    font-weight: normal;
 }
 
 .profile-container {
     padding: 0;
     display: flex;
-    align-items: center;
-    min-height: 90vh;
-    min-width: 95vw;
-}
-
-.home-logo {
-    margin-top: 10%;
-}
-
-.navbar {
-    min-width: 25%;
-    min-height: 90vh;
+    width: 90vw;
+    height: 100vh;
 }
 
 .profile {
     color: black;
-    width: 100%;
     height: 95vh;
+    width: 90%;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-heading {
+    font-family: Safiro;
+    width: 25%;
+    text-align: center;
+    color: white;
+}
+
+.profile-sections {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    flex-wrap: wrap;
+    padding-top: 15px;
+    justify-content: center;
+}
+
+.profile-card {
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+    background-color: black;
+    padding: 20px;
+    border: 1px solid white;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color: white;
+}
+
+.section-title {
     margin-top: 0;
+    color: #eeefe0;
+    text-align: center;
+    text-decoration: underline;
+    text-underline-offset: 5px;
 }
 
-.nav-item:hover {
-    background-color: grey;
+.profile-photo {
+    height: 125px;
+    width: 125px;
+    border-radius: 25px;
+    object-fit: cover;
+    border: 2px solid white;
+    padding: 3px;
+    margin-bottom: 10px;
 }
 
-/* .active {  */
-    /* font-weight: bold; */
-    /* color: rgb(13, 242, 162); */
-/* } */
+.profile-email {
+    color: #f5eedd;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.profile-detail {
+    color: #fff;
+}
+
+.divider {
+    border: none;
+    height: 2px;
+    background: white;
+    border-radius: 5px;
+}
+
+.language-section {
+    text-align: start;
+    margin-top: 15px;
+}
+
+.language-section strong {
+    padding-left: 5px;
+    color: #fff;
+}
+
+.language-tags {
+    border-radius: 20px;
+    background: white;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 15px;
+}
+
+.tag {
+    padding: 5px 10px;
+    border-radius: 15px;
+    border: 1px solid black;
+    font-size: 13px;
+}
+
+.tag-speak {
+    background-color: #d1e7dd;
+    color: black;
+}
+
+.tag-learn {
+    background-color: #cff4fc;
+    color: #055160;
+}
+
+.update-profile {
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid white;
+    background-color: black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.update-profile input,
+.update-profile textarea {
+    display: block;
+    background: #222222;
+    color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 90%;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    font-family: "Poppins", sans-serif;
+}
+
+.update-profile input:focus,
+.update-profile textarea:focus {
+    outline: none;
+    border: 1px solid #6a9c89;
+}
+
+.update-profile select {
+    display: block;
+    max-height: 110px;
+    background: #222222;
+    color: white;
+    padding: 2px 8px;
+    margin-bottom: 15px;
+    width: 95%;
+    border-radius: 8px;
+    border: 0.5px solid #ccc;
+}
+
+.update-profile label {
+    color: white;
+    font-weight: bold;
+}
+
+.update-profile button {
+    padding: 10px;
+    width: 100%;
+    border-radius: 8px;
+    background-color: #4caf50;
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
 
 option {
     cursor: pointer;
     text-align: center;
     border-radius: 7px;
-    background: #2C2C2C;
+    background: #2c2c2c;
     color: white;
     padding: 5px 0px;
     margin: 10px auto;
@@ -60,15 +198,4 @@ option:hover {
 select::-webkit-scrollbar {
     display: none;
     scroll-behavior: smooth;
-}
-
-.update-profile input, .update-profile textarea {
-    border: 1px solid transparent;
-    font-family: "Poppins", sans-serif;
-
-}
-
-.update-profile input:focus, .update-profile textarea:focus {
-    outline:none;
-    border: 1px solid #6A9C89;
 }
