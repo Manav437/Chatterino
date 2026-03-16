@@ -1,8 +1,8 @@
 function Feed() {
     return (
-        <div style={{ border: "1px solid white", margin: "5px", height: "200px" }} className="feed">
+        <div className="m-1.25 h-[200px] border border-white">
             <div className="feed-header">
-                <h2>Feed</h2>
+                <h2 className="text-xl font-bold">Feed</h2>
             </div>
             <div className="feed-content">
                 Feed content goes here

@@ -1,46 +1,32 @@
-import "../Home/Home.css"
-import { useNavigate, Link } from "react-router-dom";
-
 function ShimmerUI() {
-
     return (
-        <div className="home-container">
-            <div className="navbar">
-                <div className="home-logo">
-                    <img style={{ height: "64px", width: "64px", borderRadius: "50%", marginRight: "5px" }} src="/grey-img.png" alt="" />
-                    <p style={{ marginTop: "8px", marginBottom: "0", width: "180px", background: "grey", borderRadius: "20px" }}></p>
+        <div className="flex h-screen w-screen flex-col bg-[#242424]">
+            <div className="flex items-center justify-between border-b border-white bg-black p-2.5">
+                <div className="flex items-center">
+                    <div className="mr-1.25 h-16 w-16 animate-pulse rounded-full bg-gray-500"></div>
+                    <div className="mt-2 h-5 w-[180px] animate-pulse rounded-full bg-gray-500"></div>
                 </div>
-                <div className="nav-items">
-                    <div style={{ background: "grey" }} className="nav-item">
-                        <div style={{ height: "25px", width: "50px" }} className="nav-links"></div>
-                    </div>
-                    <div style={{ background: "grey" }} className="nav-item">
-                        <div style={{ height: "25px" }} className="nav-links"></div>
-                    </div>
-                    <div style={{ background: "grey" }} className="nav-item">
-                        <div style={{ height: "25px" }} className="nav-links"></div>
-                    </div>
-                </div>
-            </div >
-            <div className="section-two">
-                <div style={{ height: "25px", borderBottom: "1px solid offwhite", background: "black" }}>
-
-                </div>
-                <div style={{ height: "200px", border: "1px solid white", margin: "5px" }}></div>
-                <div style={{ height: "200px", border: "1px solid white", margin: "5px" }}></div>
-                <div style={{ height: "200px", border: "1px solid white", margin: "5px" }}></div>
-                <div style={{ height: "200px", border: "1px solid white", margin: "5px" }}></div>
-                <div style={{ height: "200px", border: "1px solid white", margin: "5px" }}></div>
-            </div>
-            <div className="section-three">
-                <div style={{ borderBottom: "1px solid white", paddingLeft: "5px" }}>
-                    <button style={{ height: "30px", width: "65px", margin: "10px", padding: "5px 10px", cursor: "pointer" }}></button>
-                </div>
-                <div>
-                    <div style={{ margin: "20px auto", borderRadius: "15px", height: "40px", width: "300px", background: "grey" }}></div>
+                <div className="flex gap-2.5">
+                    <div className="h-6 w-12 animate-pulse rounded bg-gray-500"></div>
+                    <div className="h-6 w-12 animate-pulse rounded bg-gray-500"></div>
+                    <div className="h-6 w-12 animate-pulse rounded bg-gray-500"></div>
                 </div>
             </div>
-        </div >
+            <div className="flex flex-1 overflow-hidden">
+                <div className="flex-[0.15] border-r border-white">
+                    <div className="mb-2.5 h-[95vh] w-full animate-pulse bg-black"></div>
+                </div>
+                <div className="flex-1 overflow-y-auto p-2.5">
+                    <div className="mb-1.25 h-[200px] w-full animate-pulse border border-white"></div>
+                    <div className="mb-1.25 h-[200px] w-full animate-pulse border border-white"></div>
+                    <div className="mb-1.25 h-[200px] w-full animate-pulse border border-white"></div>
+                    <div className="mb-1.25 h-[200px] w-full animate-pulse border border-white"></div>
+                </div>
+                <div className="flex-[0.25] border-l border-white p-2.5">
+                    <div className="mx-auto my-5 h-10 w-[300px] animate-pulse rounded-[15px] bg-gray-500"></div>
+                </div>
+            </div>
+        </div>
     )
 }
 

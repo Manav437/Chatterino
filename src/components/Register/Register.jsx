@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { ref, set } from "firebase/database";
 import { auth, database } from "../../firebase.js";
-import "./Register.css";
+import { ChevronLeft } from 'lucide-react';
 
 function RegisterPage() {
     const [name, setName] = useState("");
@@ -65,100 +65,103 @@ function RegisterPage() {
     };
 
     return (
-        <div className="register-container">
-            <Link className="logo-link" to="/">
-                <img src="/mogul-moves.svg" alt="Mogul Moves Logo" />
-            </Link>
-            <div className="register-card">
-                <h1 style={{ margin: "0" }}>SIGN UP</h1>
-                <form
-                    autoComplete="off"
-                    onSubmit={handleAddUser}
-                    style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: "10px",
-                        minWidth: "300px",
-                    }}
-                >
-                    <label style={{ textAlign: "start" }}>Username</label>
-                    <input
-                        className="register-input"
-                        autoComplete="new-name"
-                        placeholder="noobmaster"
-                        type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        required
-                    />
+        <div className="flex h-screen w-screen overflow-hidden bg-[#111]">
+            <div className="hidden h-full w-[30%] md:block">
+                <img
+                    src="/auth-img.webp"
+                    alt="Authentication"
+                    className="h-full w-full object-cover"
+                />
+            </div>
 
-                    <label style={{ textAlign: "start" }}>Email</label>
-                    <input
-                        className="register-input"
-                        autoComplete="new-email"
-                        placeholder="xyz@hotmail.com"
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
+            <div className="bg-mesh-gradient relative flex h-full flex-1 flex-col items-center justify-center px-4 md:w-[70%]">
+                <Link to="/" className="absolute text-white left-8 top-8 z-20 flex bg-white/10 pl-1 pr-1.5 py-1 rounded-md hover:bg-white/20">
+                    <ChevronLeft />
+                </Link>
 
-                    <label style={{ textAlign: "start" }}>Password</label>
-                    <input
-                        className="register-input"
-                        autoComplete="new-password"
-                        placeholder="********"
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-
-                    <label
-                        style={{
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "7px",
-                            margin: "3px 0",
-                            textAlign: "start",
-                            fontSize: "13px",
-                        }}
-                    >
-                        <input
-                            style={{ cursor: "pointer" }}
-                            type="checkbox"
-                            checked={termsAgreed}
-                            onChange={(e) => setTermsAgreed(e.target.checked)}
-                        />
-                        I agree to terms and conditions.
-                    </label>
-
-                    <button
-                        className="register-btn"
-                        type="submit"
-                        disabled={loading}
-                    >
-                        {loading ? "Signing Up..." : "Sign up"}
-                    </button>
-
-                    <div className="error-placeholder">
-                        {error && <p className="error-message">{error}</p>}
+                <div className="flex w-full max-w-md flex-col items-center gap-8 p-8 md:p-10">
+                    <div className="text-center">
+                        <h1 className="mb-2 text-4xl font-bold tracking-tight text-white uppercase">Create Account</h1>
+                        <p className="text-gray-400 text-sm">Join our community and start sharing.</p>
                     </div>
-                </form>
 
-                <p style={{ margin: "5px 0 3px 0" }}>
-                    Already have an account?{" "}
-                    <Link
-                        to="/login"
-                        style={{
-                            color: "#328E6E",
-                            textDecoration: "underline",
-                            textUnderlineOffset: "3px",
-                        }}
+                    <form
+                        onSubmit={handleAddUser}
+                        className="flex w-full flex-col gap-4"
+                        autoComplete="off"
                     >
-                        Login
-                    </Link>
-                </p>
+                        <div className="space-y-1.5 flex flex-col items-start">
+                            <label className="pl-1 text-xs font-semibold text-gray-400 uppercase tracking-widest">Username</label>
+                            <input
+                                type="text"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                placeholder="noobmaster"
+                                className="w-full h-11 text-sm rounded-xl border-2 border-white/10 bg-white/5 px-4 text-white outline-none transition-all focus:border-emerald-500/30 duration-300 focus:bg-white/10"
+                                required
+                            />
+                        </div>
+
+                        <div className="space-y-1.5 flex flex-col items-start">
+                            <label className="pl-1 text-xs font-semibold text-gray-400 uppercase tracking-widest">Email Address</label>
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                placeholder="manav.communify@example.com"
+                                className="w-full h-11 text-sm rounded-xl border-2 border-white/10 bg-white/5 px-4 text-white outline-none transition-all focus:border-emerald-500/30 duration-300 focus:bg-white/10"
+                                required
+                            />
+                        </div>
+
+                        <div className="space-y-1.5 flex flex-col items-start" autoFocus={false}>
+                            <label className="pl-1 text-xs font-semibold text-gray-400 uppercase tracking-widest">Password</label>
+                            <input
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                placeholder="••••••••"
+                                className="w-full h-11 text-sm rounded-xl border-2 border-white/10 bg-white/5 px-4 text-white outline-none transition-all focus:border-emerald-500/30 duration-300 focus:bg-white/10"
+                                required
+                            />
+                        </div>
+
+                        <label className="flex cursor-pointer items-center justify-center gap-2 py-1 text-sm text-gray-400">
+                            <input
+                                type="checkbox"
+                                checked={termsAgreed}
+                                onChange={(e) => setTermsAgreed(e.target.checked)}
+                                className="h-4 w-4 rounded border-white/10 bg-white/5 accent-emerald-500"
+                            />
+                            <span>I agree to terms and conditions.</span>
+                        </label>
+
+                        {error && (
+                            <p className="text-center text-sm font-medium text-rose-500 bg-rose-500/10 py-2 rounded-lg border border-rose-500/20">
+                                {error}
+                            </p>
+                        )}
+
+                        <button
+                            className="h-11 w-full cursor-pointer rounded-[50px] [corner-shape:squircle] bg-white font-bold text-black transition-all hover:scale-[1.01] active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed group relative overflow-hidden mt-2"
+                            type="submit"
+                            disabled={loading}
+                        >
+                            <span className="relative z-10">{loading ? "Signing Up..." : "Sign Up"}</span>
+                            <div className="absolute inset-0 -translate-x-full bg-linear-to-r from-emerald-400 to-teal-400 transition-transform duration-300 group-hover:translate-x-0"></div>
+                        </button>
+                    </form>
+
+                    <p className="text-gray-400">
+                        Already have an account?{" "}
+                        <Link
+                            to="/login"
+                            className="text-sm font-semibold text-blue-400/90 hover:text-blue-300 hover:underline underline-offset-2 decoration-1"
+                        >
+                            Sign In
+                        </Link>
+                    </p>
+                </div>
             </div>
         </div>
     );

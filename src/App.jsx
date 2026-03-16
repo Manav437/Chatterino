@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
     BrowserRouter as Router,
     Routes,
@@ -13,46 +13,15 @@ import LoginPage from "./components/Login/Login";
 import ChatsPage from "./components/Chats/Chat";
 import AboutPage from "./components/About/About";
 import NotFoundPage from "./components/NotFoundPage/NotFound";
-import { auth } from "./firebase";
-import { onAuthStateChanged } from "firebase/auth";
-import "./App.css";
+import { useAuth } from "./context/AuthContext";
+import MainLayout from "./components/Layout/MainLayout";
 
 function App() {
-    const [isLoggedIn, setIsLoggedIn] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const { isLoggedIn } = useAuth();
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            setIsLoggedIn(!!user);
-            setLoading(false);
-        });
-
-        return () => unsubscribe();
-    }, []);
-
-    if (loading)
-        return (
-            <div
-                style={{
-                    height: "100vh",
-                    width: "100vw",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                }}
-            >
-                <span style={{ margin: "auto" }} className="loader"></span>
-            </div>
-        );
     return (
         <Router>
             <Routes>
-                <Route
-                    path="/"
-                    element={
-                        isLoggedIn ? <HomeLoggedIn /> : <HomeNotLoggedIn />
-                    }
-                />
                 <Route
                     path="/register"
                     element={
@@ -63,18 +32,19 @@ function App() {
                     path="/login"
                     element={!isLoggedIn ? <LoginPage /> : <Navigate to="/" />}
                 />
+
                 <Route
-                    path="/profile"
-                    element={
-                        isLoggedIn ? <ProfilePage /> : <Navigate to="/login" />
-                    }
-                />
-                <Route
-                    path="/chats"
-                    element={
-                        isLoggedIn ? <ChatsPage /> : <Navigate to="/login" />
-                    }
-                />
+                    path="/"
+                    element={isLoggedIn ? <MainLayout /> : <HomeNotLoggedIn />}
+                >
+                    {isLoggedIn && <Route index element={<HomeLoggedIn />} />}
+                </Route>
+
+                <Route element={isLoggedIn ? <MainLayout /> : <Navigate to="/login" />}>
+                    <Route path="/profile" element={<ProfilePage />} />
+                    <Route path="/chats" element={<ChatsPage />} />
+                </Route>
+
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/*" element={<NotFoundPage />} />
             </Routes>
