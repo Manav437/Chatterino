@@ -1,22 +1,20 @@
-# Huddle 🏠✨
+# Huddle
 
 A premium, modern social networking application built for deep connections and meaningful conversations. Huddle features a stunning glassmorphism design, real-time interactions, and smart chatrooms tailored for language learners and enthusiasts.
 
-![Huddle Preview](/frontend/Social-Media-App/public/chatterino-img.png)
+![Huddle Preview](public/feed-img.png)
 
 ## Key Features
 
-- **Premium UI/UX**: Stunning desktop and mobile experience with mesh gradients, glassmorphism, and smooth animations (AOS).
 - **Global Feed**: Real-time social feed where users can share thoughts, capture moments, and interact with the community.
-- **Smart Chatrooms**: Localized chatrooms that connect you with people speaking or learning the same languages as you.
+- **Chatrooms**: Localized chatrooms that connect you with people speaking or learning the same languages as you.
 - **Personalized Profiles**: Showcase your identity with a unique bio, profile picture, and language preferences.
-- **Floating Navigation**: Modern, glassmorphism-based sidebar (desktop) and bottom nav (mobile) for seamless exploration.
 - **Real-time Engine**: Powered by Firebase for instant messaging, posting, and live updates.
 
 ## Tech Stack
 
 - **Framework**: [React](https://reactjs.org/) + [Vite](https://vitejs.dev/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/) (Modern Utility-First Styles)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) 
 - **Database & Auth**: [Firebase](https://firebase.google.com/) (Real-time Database & Authentication)
 - **Animations**: [AOS](https://michalsnik.github.io/aos/) (Animate On Scroll)
 - **Icons**: [Lucide React](https://lucide.dev/)
@@ -32,7 +30,7 @@ A premium, modern social networking application built for deep connections and m
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone <https://github.com/Manav437/Huddle>
    cd "Social Media App/frontend/Social-Media-App"
    ```
 
@@ -69,7 +67,3 @@ src/
 ├── utils/           # Helper functions (formatDate, etc.)
 └── App.jsx          # Main Routing and App Logic
 ```
-
----
-
-Developed with by [MNV GSN](https://x.com/manav437)
