@@ -15,6 +15,7 @@ import AboutPage from "./components/About/About";
 import NotFoundPage from "./components/NotFoundPage/NotFound";
 import { useAuth } from "./context/AuthContext";
 import MainLayout from "./components/Layout/MainLayout";
+import ProtectedRoute from "./components/Layout/ProtectedRoute";
 
 function App() {
     const { isLoggedIn } = useAuth();
@@ -32,6 +33,7 @@ function App() {
                     path="/login"
                     element={!isLoggedIn ? <LoginPage /> : <Navigate to="/" />}
                 />
+                <Route path="/about" element={<AboutPage />} />
 
                 <Route
                     path="/"
@@ -40,12 +42,13 @@ function App() {
                     {isLoggedIn && <Route index element={<HomeLoggedIn />} />}
                 </Route>
 
-                <Route element={isLoggedIn ? <MainLayout /> : <Navigate to="/login" />}>
-                    <Route path="/profile" element={<ProfilePage />} />
-                    <Route path="/chats" element={<ChatsPage />} />
+                <Route element={<ProtectedRoute />}>
+                    <Route element={<MainLayout />}>
+                        <Route path="/profile" element={<ProfilePage />} />
+                        <Route path="/chats" element={<ChatsPage />} />
+                    </Route>
                 </Route>
 
-                <Route path="/about" element={<AboutPage />} />
                 <Route path="/*" element={<NotFoundPage />} />
             </Routes>
         </Router>

@@ -132,7 +132,7 @@ function HomeLoggedIn() {
 
                 <div className="hidden h-full flex-col border-l border-white/5 bg-[#0d1117]/40 backdrop-blur-2xl md:flex">
                     <div className="p-8 border-b border-white/5">
-                        <div className="mb-8 flex items-center gap-4">
+                        <div className="mb-8 flex items-start gap-4">
                             <img
                                 src={currentUser?.photoURL || "/noimg-icon.png"}
                                 className="h-15 w-15 rounded-2xl p-0.5 ring-1 ring-white shadow-lg object-cover"
@@ -140,24 +140,24 @@ function HomeLoggedIn() {
                             />
                             <div className="flex items-start flex-col">
                                 <span className="text-sm font-black text-white">{currentUser?.displayName || "User"}</span>
-                                <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Premium Member</span>
+                                <span className="text-[11px] text-start text-gray-500 tracking-widest">professional moron / gifted amateur</span>
                             </div>
                         </div>
 
                         <div className="flex flex-col gap-3">
                             <button
-                                className="cursor-pointer group relative flex items-center justify-center gap-2 overflow-hidden rounded-2xl bg-linear-to-r from-blue-600 to-blue-500 py-3.5 text-xs font-bold text-white shadow-lg shadow-blue-900/40 transition-all"
+                                className="cursor-pointer group relative flex items-center justify-center gap-2 overflow-hidden rounded-[50px] [corner-shape:squircle] bg-sky-500 hover:bg-sky-500/90 py-3.5 text-xs font-bold text-black shadow-lg shadow-white/5 transition-all active:scale-[0.98]"
                                 onClick={handleNewPost}
                             >
                                 <span className="relative z-10 flex items-center gap-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14M5 12h14" /></svg>
                                     New Post
                                 </span>
-                                <div className="absolute inset-0 z-0 bg-white opacity-0 transition-opacity group-hover:opacity-10"></div>
+                                <div className="absolute inset-0 z-0 bg-black opacity-0 transition-opacity group-hover:opacity-5"></div>
                             </button>
 
                             <button
-                                className="cursor-pointer flex items-center justify-center gap-2 rounded-2xl border border-red-500/20 bg-red-500/10 py-3.5 text-xs font-bold text-red-400 transition-all hover:bg-red-500/20 hover:text-red-300"
+                                className="cursor-pointer flex items-center justify-center gap-2 rounded-[50px] [corner-shape:squircle] border border-red-500/20 bg-red-500/10 py-3.5 text-xs font-bold text-red-400 transition-all hover:bg-red-500/20 hover:text-red-300"
                                 onClick={handleLogout}
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9" /></svg>
@@ -197,17 +197,17 @@ function HomeLoggedIn() {
                     </div>
                 </div>
                 <div
-                    className={`fixed bottom-24 left-1/2 z-100 -translate-x-1/2 flex items-center gap-3 rounded-2xl border border-blue-500/30 bg-[#161b22] px-6 py-4 text-white shadow-2xl backdrop-blur-xl transition-all duration-500 ${showAlert ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0 pointer-events-none"}`}
+                    className={`fixed bottom-10 -right-12 z-100 -translate-x-1/2 flex items-center gap-3 rounded-[50px] [corner-shape:squircle] border border-white/30 bg-[#161b22] px-4 py-2.5 text-white shadow-2xl backdrop-blur-xl transition-all duration-500 ${showAlert ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0 pointer-events-none"}`}
                 >
                     <div className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-500/20 text-blue-400">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                     </div>
-                    <span className="text-sm font-bold tracking-wide">Friend request sent! ✉️</span>
+                    <span className="text-sm font-bold tracking-wide">Friend request sent!</span>
                 </div>
             </div>
 
             <button
-                className="group fixed bottom-24 right-6 z-40 flex h-16 w-16 items-center justify-center rounded-[24px] bg-linear-to-br from-blue-600 to-blue-500 text-white shadow-2xl shadow-blue-900/50 transition-all hover:scale-105 active:scale-95 md:hidden"
+                className="group fixed bottom-24 right-6 z-40 flex h-16 w-16 items-center justify-center rounded-[24px] bg-white text-black shadow-2xl shadow-white/10 transition-all hover:scale-105 active:scale-95 md:hidden"
                 onClick={handleNewPost}
             >
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14M5 12h14" /></svg>

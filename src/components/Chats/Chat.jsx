@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { database, auth } from "../../firebase";
 import { get, ref, push, onValue } from "firebase/database";
 import { languagesList } from "../../constants/languages";
+import { MessageCircleMore, Brain } from 'lucide-react';
 
 function ChatsPage() {
     const [selectedGroup, setSelectedGroup] = useState(null);
@@ -75,7 +76,6 @@ function ChatsPage() {
 
     return (
         <div className="flex flex-col h-full w-full md:flex-row overflow-hidden bg-[#0d1117] text-[#c9d1d9]">
-            {/* SIDEBAR: Chatrooms */}
             <div className="flex h-auto w-full flex-col border-b border-[#30363d] bg-[#161b22] md:h-full md:w-[280px] md:border-b-0 md:border-r">
                 <div className="p-6">
                     <h3 className="mb-6 text-2xl font-bold text-white flex items-center gap-2">
@@ -93,7 +93,7 @@ function ChatsPage() {
                             users.map((lang, i) => (
                                 <button
                                     key={i}
-                                    className={`group flex items-center gap-3 w-full rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-200 ${selectedGroup === lang
+                                    className={`cursor-pointer group flex items-center gap-3 w-full rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-200 ${selectedGroup === lang
                                         ? "bg-[#238636] text-white shadow-lg shadow-[#238636]/20"
                                         : "text-[#8b949e] hover:bg-[#21262d] hover:text-white"
                                         }`}
@@ -108,26 +108,29 @@ function ChatsPage() {
                 </div>
                 <div className="mt-auto hidden md:block p-6">
                     <div className="rounded-2xl bg-linear-to-br from-[#1f6feb] to-[#111] p-0.5">
-                        <div className="rounded-[14px] bg-[#161b22] p-4 text-center">
-                            <p className="text-xs font-bold text-gray-400">Pro Tip</p>
+                        <div className="flex flex-col items-center rounded-[14px] bg-[#161b22] p-4 text-center">
+                            <div className="flex items-center gap-1">
+                                <Brain className="h-4" />
+                                <p className="text-xs font-bold text-gray-400">Pro Tip</p>
+                            </div>
                             <p className="text-[10px] text-gray-500 mt-1">Chat in your target language to learn faster!</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* MAIN CONTENT: Chat window */}
             <div className="flex flex-1 flex-col overflow-hidden">
                 {!selectedGroup ? (
                     <div className="flex flex-1 flex-col items-center justify-center p-12 text-center bg-[#0d1117]">
-                        <div className="mb-6 rounded-3xl bg-[#161b22] p-8 border border-[#30363d] animate-pulse">
+                        {/* <div className="mb-6 rounded-3xl bg-[#161b22] p-8 border border-[#30363d] animate-pulse">
                             <img
                                 src="/chat-arrow.png"
                                 alt="arrow"
                                 className="h-[80px] opacity-20 grayscale"
                             />
-                        </div>
-                        <h2 className="text-2xl font-bold text-white mb-2">Welcome to Chatterino</h2>
+                        </div> */}
+                        <img src="/favicon-img.png" />
+                        <h2 className="text-2xl font-bold text-white mb-2">Welcome to Huddle</h2>
                         <p className="text-gray-500 max-w-sm">Select a language channel from the sidebar to start connecting with others.</p>
                     </div>
                 ) : (
@@ -137,18 +140,17 @@ function ChatsPage() {
                                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#238636] text-xl font-bold text-white">
                                     {selectedGroup[0]}
                                 </div>
-                                <div>
-                                    <h3 className="text-lg font-bold text-white">#{selectedGroup}</h3>
+                                <div className="text-start">
+                                    <h3 className="text-lg font-bold text-white uppercase"># {selectedGroup}</h3>
                                     <p className="text-xs text-[#8b949e]">Public Language Channel</p>
                                 </div>
                             </div>
                         </div>
 
-                        {/* Messages Area */}
                         <div className="flex-1 overflow-y-auto p-6 scrollbar-thin scrollbar-thumb-[#30363d]">
                             {groupMessages.length === 0 ? (
                                 <div className="flex flex-col items-center justify-center py-20 text-center opacity-50">
-                                    <div className="mb-4 text-4xl">👋</div>
+                                    <MessageCircleMore className="text-4xl mb-4" />
                                     <p className="text-lg font-medium">This is the start of #{selectedGroup}</p>
                                     <p className="text-sm">Be the first to say hello!</p>
                                 </div>
@@ -190,7 +192,6 @@ function ChatsPage() {
                             )}
                         </div>
 
-                        {/* Input Area */}
                         <div className="border-t border-[#30363d] bg-[#0d1117] p-6">
                             <form onSubmit={sendGroupMessage} className="relative mx-auto max-w-4xl">
                                 <input

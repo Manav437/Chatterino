@@ -1,9 +1,8 @@
-# Huddle
+# Huddle 🏠✨
 
 A premium, modern social networking application built for deep connections and meaningful conversations. Huddle features a stunning glassmorphism design, real-time interactions, and smart chatrooms tailored for language learners and enthusiasts.
 
-
-
+![Huddle Preview](/frontend/Social-Media-App/public/chatterino-img.png)
 
 ## Key Features
 
@@ -33,7 +32,8 @@ A premium, modern social networking application built for deep connections and m
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/Manav437/Huddle
+   git clone <repository-url>
+   cd "Social Media App/frontend/Social-Media-App"
    ```
 
 2. **Install dependencies**

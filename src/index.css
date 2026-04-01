@@ -1,7 +1,10 @@
 @import "tailwindcss";
 
 :root {
-    font-family: "Poppins", system-ui, Avenir, Helvetica, Arial, sans-serif;
+    --font-display: "Outfit", system-ui, sans-serif;
+    --font-sans: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+    font-family: var(--font-sans);
     line-height: 1.5;
     font-weight: 400;
     max-width: 150vw;
@@ -10,8 +13,8 @@
     text-align: center;
     color-scheme: light dark;
     color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
-    min-height: 90vh;
+    background-color: #2c2c2c;
+    min-height: 100vh;
 
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -62,11 +65,8 @@
     87% { box-shadow: 0.2em -0.2em 0 0 currentcolor; }
 }
 
-.h1-one { font-family: "Notable", sans-serif; font-weight: 400; }
-.h1-two { font-family: "Plaster", system-ui; font-weight: 400; }
-.h1-three { font-family: "Press Start 2P", system-ui; font-weight: 400; }
-.h1-four { font-family: "Nabla", system-ui; font-weight: 400; }
-.h1-five { font-family: "Train One", system-ui; font-weight: 400; }
+.font-display { font-family: var(--font-display); }
+.font-sans { font-family: var(--font-sans); }
 
 .loader {
     transform: rotateZ(45deg);
@@ -99,7 +99,7 @@
 }
 
 .glow-on-hover {
-    font-family: "Limelight", sans-serif;
+    font-family: var(--font-display);
     font-weight: 800;
     width: 42%;
     height: 125px;
